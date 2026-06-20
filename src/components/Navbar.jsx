@@ -4,9 +4,9 @@ import { ShoppingBag, MapPin } from "lucide-react";
 import logo from "../assets/logo.png" 
 
 // Import components
-import { Image } from "./index";
+import { Image, Languages } from "./index";
 
-export default function Navbar({ cartCount, onCartClick }) {
+export default function Navbar({ cartCount, onCartClick, language, dispatch }) {
   return (
     <header className="sticky top-0 z-30 bg-char/90 backdrop-blur border-b border-cream/10">
       <div className="max-w-3xl mx-auto px-4 flex items-center justify-between">
@@ -15,9 +15,10 @@ export default function Navbar({ cartCount, onCartClick }) {
           <span className="font-display text-xl font-bold text-marigold">Chez Farahi</span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="hidden sm:flex items-center gap-1 text-xs text-mute/80">
+          {/* <span className="hidden sm:flex items-center gap-1 text-xs text-mute/80">
             <MapPin size={14} /> Haguenau, Place du Marché
-          </span>
+          </span> */}
+          <Languages language={language} dispatch={dispatch} />
           <button
             onClick={onCartClick}
             className="relative w-10 h-10 rounded-full bg-char-soft flex items-center justify-center hover:bg-marigold/20 transition"

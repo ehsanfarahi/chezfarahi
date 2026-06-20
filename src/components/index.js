@@ -1,3 +1,5 @@
 import Image from "./Image";
+import SocialMedias from "./SocialMedias";
+import Languages from "./Languages";
 
-export {Image}
+export {Image, SocialMedias, Languages};

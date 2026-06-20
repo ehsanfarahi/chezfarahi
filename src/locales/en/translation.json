@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "location": "Haguenau, Market Square"
+  },
+  "hero": {
+    "status": "Open now · closes at 12:00 PM",
+    "title_line1": "The taste of",
+    "title_highlight": "quality,",
+    "title_line2": "simply.",
+    "subtitle": "Homemade samosas, freshly grilled sandwiches, hot dogs and fresh fries. Order now, pick up on site.",
+    "cta": "See tonight's menu"
+  },
+  "menu": {
+    "title": "The Menu",
+    "all": "All"
+  },
+  "cart": {
+    "title": "Your order",
+    "empty": "Your cart is empty. Add something tasty!",
+    "total": "Total",
+    "order": "Order"
+  },
+  "ai": {
+    "button": "Ask the AI",
+    "title": "Menu advisor",
+    "placeholder": "E.g. I'd like something vegetarian and cheap",
+    "greeting": "Hi! 👋 Tell me what you're craving — spicy, veggie, budget-friendly — and I'll recommend a dish."
+  }
+}

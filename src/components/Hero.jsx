@@ -1,6 +1,10 @@
 import { Clock, MapPin, Sparkles } from "lucide-react";
 
+// Translation
+import { useTranslation } from "react-i18next"; 
+
 export default function Hero() {
+  const { t } = useTranslation();
   return (
     <section className="relative max-w-3xl mx-auto px-4 pt-10 pb-8">
       <div className="flex items-center gap-2 mb-4">
@@ -9,12 +13,12 @@ export default function Hero() {
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-herb" />
         </span>
         <span className="text-sm font-medium text-mute">
-          Ouvert maintenant · ferme à 12h00
+          {t("hero.status")}
         </span>
       </div>
 
       <h1 className="font-display text-4xl sm:text-5xl font-bold leading-[1.05] text-cream">
-        Le goût de la <span className="text-marigold">qualité,</span> tout simplement.
+        {t("hero.title_line1")} <span className="text-marigold">qualité,</span> tout simplement.
       </h1>
       <p className="mt-4 text-mute/90 text-base sm:text-lg max-w-lg">
         Samosas faits maison, sandwichs grillés à la minute, hot-dogs et frites

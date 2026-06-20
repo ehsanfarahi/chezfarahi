@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "location": "Haguenau, Place du Marché" 
+  },
+  "hero": {
+    "status": "Ouvert maintenant · ferme à 12h00",
+    "title_line1": "Le goût de la",
+    "title_highlight": "qualité,",
+    "title_line2": "tout simplement.",
+    "subtitle": "Samosas faits maison, sandwichs grillés à la minute, hot-dogs et frites fraîches. Commandez maintenant, récupérez sur place.",
+    "cta": "Voir le menu du soir"
+  },
+  "menu": {
+    "title": "Le Menu",
+    "all": "Tous"
+  },
+  "cart": {
+    "title": "Votre commande",
+    "empty": "Votre panier est vide. Ajoutez quelque chose de bon !",
+    "total": "Total",
+    "order": "Commander"
+  },
+  "ai": {
+    "button": "Demander à l'IA",
+    "title": "Conseiller du menu",
+    "placeholder": "Ex: je voudrais quelque chose de végé et pas cher",
+    "greeting": "Salut ! 👋 Dites-moi ce que vous avez envie de manger — épicé, végé, petit budget — et je vous conseille un plat du menu."
+  }
+}

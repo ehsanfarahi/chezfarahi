@@ -14,7 +14,11 @@
   --color-chili-dark: #A6341E;
   --color-herb: #5C7A5E;
   --color-mute: #E8DFD3;
+
+  --transition-property-position: position;
 }
+
+/* Removed @custom-variant rules (not standard CSS). Use regular @media queries or configure variants in Tailwind config instead. */
 
 @layer base {
   body {
@@ -24,7 +28,6 @@
   }
 }
 
-/* Ticket stub: perforated divider */
 .ticket-divider {
   background-image: radial-gradient(circle, var(--color-char) 2px, transparent 2.5px);
   background-size: 12px 100%;
