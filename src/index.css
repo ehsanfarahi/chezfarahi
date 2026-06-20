@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-char: #1B1411;
+  --color-char-soft: #2A211C;
+  --color-cream: #FAF6F0;
+  --color-marigold: #F2A93B;
+  --color-marigold-light: #F7C778;
+  --color-chili: #C8432A;
+  --color-chili-dark: #A6341E;
+  --color-herb: #5C7A5E;
+  --color-mute: #E8DFD3;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-char);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+  }
+}
+
+/* Ticket stub: perforated divider */
+.ticket-divider {
+  background-image: radial-gradient(circle, var(--color-char) 2px, transparent 2.5px);
+  background-size: 12px 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.ticket-notch::before,
+.ticket-notch::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--color-char);
+  border-radius: 999px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ticket-notch::before { left: -8px; }
+.ticket-notch::after { right: -8px; }
