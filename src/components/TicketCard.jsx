@@ -55,7 +55,7 @@ export default function TicketCard({ item, onAdd }) {
 
       <Image
         src={item.img}
-        alt="hot-dog"
+        alt={item.name}
         width="200"
         imgStyle="absolute -bottom-12 -right-4"
       />

@@ -91,9 +91,9 @@ export default function ProductDetail({ onAdd }) {
         ref={heroRef}
         className="relative w-full h-[36vh] sm:h-[40vh] overflow-hidden"
       >
-        {product.image ? (
+        {product.img ? (
           <img
-            src={product.image}
+            src={product.img}
             alt={product.name}
             className="w-full h-full object-cover"
           />
