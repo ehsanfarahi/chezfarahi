@@ -29,7 +29,7 @@ export default function Menu({ onAdd }) {
         ))}
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-6 max-sm:gap-12 mt-2">
+      <div className="grid sm:grid-cols-2 gap-6 max-sm:gap-12">
         {filtered.map((item) => (
           <TicketCard img={item.img} key={item.id} item={item} onAdd={onAdd} />
         ))}

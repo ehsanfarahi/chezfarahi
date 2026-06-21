@@ -1,4 +1,4 @@
-export const categories = ["Samosas", "Sandwichs", "Hot-Dogs", "Frites"];
+export const categories = ["Frites", "Samosas", "Sandwichs", "Hot-Dogs", "Chiken Chow Mein", "Rouleaux Printemps"];
 
 export const menuItems = [
   {
@@ -8,8 +8,18 @@ export const menuItems = [
     img: "../src/assets/samosa.png",
     tag: "Best-seller",
     desc: "Agneau mijoté, oignons, coriandre, épices maison",
+    longDesc:
+      "Notre recette signature : agneau mijoté pendant 4 heures avec oignons caramélisés, coriandre fraîche et un mélange d'épices maison transmis de génération en génération. Croustillant à l'extérieur, fondant à l'intérieur.",
     price: 4.5,
     veg: false,
+    spicy: 2,
+    rating: 4.8,
+    reviews: 142,
+    image: null,
+    emoji: "🥟",
+    nutrition: { calories: 280, protein: "12g", carbs: "24g", fat: "16g" },
+    allergens: ["Gluten"],
+    promo: "Achetez-en 3, le 4ème est à -50%",
   },
   {
     id: "sam-02",
@@ -18,8 +28,18 @@ export const menuItems = [
     img: "../src/assets/hot-dog.png",
     tag: "Végé",
     desc: "Pommes de terre, petits pois, cumin, curcuma",
+    longDesc:
+      "Un classique végétarien généreux en saveurs : pommes de terre fondantes, petits pois et un mélange de cumin et curcuma qui réveille les papilles. Servi avec une sauce chutney maison.",
     price: 3.5,
     veg: true,
+    spicy: 1,
+    rating: 4.6,
+    reviews: 98,
+    image: null,
+    emoji: "🥟",
+    nutrition: { calories: 210, protein: "5g", carbs: "30g", fat: "9g" },
+    allergens: ["Gluten"],
+    promo: null,
   },
   {
     id: "san-01",
@@ -28,8 +48,18 @@ export const menuItems = [
     img: "../src/assets/samosa.png",
     tag: "Signature",
     desc: "Poulet grillé, sauce yaourt-menthe, crudités, pain maison",
+    longDesc:
+      "Poulet mariné 24h dans nos épices puis grillé à la minute, accompagné d'une sauce yaourt-menthe rafraîchissante et de crudités croquantes, le tout dans notre pain maison moelleux.",
     price: 7.5,
     veg: false,
+    spicy: 1,
+    rating: 4.9,
+    reviews: 211,
+    image: null,
+    emoji: "🥪",
+    nutrition: { calories: 460, protein: "28g", carbs: "42g", fat: "18g" },
+    allergens: ["Gluten", "Lait"],
+    promo: "Avec des frites maison pour seulement +2€",
   },
   {
     id: "san-02",
@@ -38,8 +68,18 @@ export const menuItems = [
     img: "../src/assets/hot-dog.png",
     tag: "Végé",
     desc: "Falafels croustillants, houmous, légumes frais",
+    longDesc:
+      "Falafels croustillants faits maison, houmous crémeux et légumes frais croquants, le tout généreusement garni dans notre pain artisanal.",
     price: 6.5,
     veg: true,
+    spicy: 1,
+    rating: 4.7,
+    reviews: 76,
+    image: null,
+    emoji: "🥙",
+    nutrition: { calories: 390, protein: "14g", carbs: "48g", fat: "15g" },
+    allergens: ["Gluten", "Sésame"],
+    promo: null,
   },
   {
     id: "hd-01",
@@ -48,8 +88,18 @@ export const menuItems = [
     img: "../src/assets/samosa.png",
     tag: "",
     desc: "Saucisse grillée, oignons caramélisés, moutarde",
+    longDesc:
+      "Le grand classique réinventé : saucisse grillée à la perfection, oignons caramélisés lentement et notre moutarde de Strasbourg.",
     price: 6.0,
     veg: false,
+    spicy: 0,
+    rating: 4.5,
+    reviews: 64,
+    image: null,
+    emoji: "🌭",
+    nutrition: { calories: 410, protein: "16g", carbs: "32g", fat: "24g" },
+    allergens: ["Gluten", "Moutarde"],
+    promo: null,
   },
   {
     id: "hd-02",
@@ -58,27 +108,62 @@ export const menuItems = [
     img: "../src/assets/hot-dog.png",
     tag: "Piquant",
     desc: "Saucisse, sauce chili maison, jalapeños",
+    longDesc:
+      "Pour les amateurs de sensations fortes : saucisse grillée, notre sauce chili maison mijotée des heures, et jalapeños frais.",
     price: 6.5,
     veg: false,
+    spicy: 3,
+    rating: 4.6,
+    reviews: 53,
+    image: null,
+    emoji: "🌭",
+    nutrition: { calories: 440, protein: "17g", carbs: "33g", fat: "26g" },
+    allergens: ["Gluten"],
+    promo: "2 hot-dogs achetés = 1 frites offerte",
   },
   {
     id: "fr-01",
     category: "Frites",
     name: "Frites Maison",
-    img: "../src/assets/samosa.png",
+    img: "../src/assets/hot-dog.png",
     tag: "",
     desc: "Coupées et frites sur place, sel fin",
+    longDesc:
+      "Pommes de terre épluchées et coupées sur place chaque jour, frites deux fois pour un croustillant parfait, assaisonnées de sel fin.",
     price: 3.5,
     veg: true,
+    spicy: 0,
+    rating: 4.7,
+    reviews: 89,
+    image: null,
+    emoji: "🍟",
+    nutrition: { calories: 320, protein: "4g", carbs: "42g", fat: "15g" },
+    allergens: [],
+    promo: null,
   },
   {
     id: "fr-02",
     category: "Frites",
     name: "Frites Épicées",
-    img: "../src/assets/hot-dog.png",
+    img: "../src/assets/samosa.png",
     tag: "Piquant",
     desc: "Épices maison, sauce chili en option",
+    longDesc:
+      "Nos frites maison généreusement saupoudrées d'épices maison, servies avec une option de sauce chili à part.",
     price: 4.0,
     veg: true,
+    spicy: 2,
+    rating: 4.5,
+    reviews: 47,
+    image: null,
+    emoji: "🍟",
+    nutrition: { calories: 340, protein: "4g", carbs: "43g", fat: "17g" },
+    allergens: [],
+    promo: null,
   },
 ];
+
+
+export function getProductById(id) {
+  return menuItems.find((item) => item.id === id);
+}

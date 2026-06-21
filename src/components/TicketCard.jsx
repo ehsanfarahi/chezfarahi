@@ -1,17 +1,18 @@
 import { Plus, Leaf } from "lucide-react";
-
-// Logo img
-import Logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import { Image } from "./index";
 
 export default function TicketCard({ item, onAdd }) {
+  const navigate = useNavigate();
+
   return (
-     <div className="relative flex bg-transparent text-char 
-     shadow-lg shadow-black/30">
+     <div onClick={() => navigate(`/product/${item.id}`)} className="relative cursor-pointer hover:shadow-xl hover:shadow-black/40 transition-shadow">
+      <div className="relative flex bg-cream text-char 
+     shadow-lg shadow-black/30 rounded-4xl overflow-hidden"> 
       {/* Left: info */}
-      <div className="p-4 pr-5 bg-cream basis-4/6 rounded-tl-4xl rounded-bl-4xl">
+      <div className="p-4 basis-4/6">
         <div className="flex items-center gap-2 mb-1">
           {item.tag && (
             <span className="text-[10px] uppercase tracking-wider font-semibold bg-marigold/90 text-char px-2 py-0.5 rounded-full">
@@ -26,12 +27,12 @@ export default function TicketCard({ item, onAdd }) {
         </div>
         <h3 className="font-display text-lg font-semibold leading-tight">{item.name}</h3>
         <p className="text-sm text-char/70 mt-1 leading-snug">{item.desc}</p>
-      </div>
+      </div> 
 
 
       {/* Right: price + add */}
-      <div className="relative flex basis-2/6 justify-center px-3 bg-cream rounded-tr-4xl rounded-br-4xl">
-        <div className="flex items-center gap-2 absolute top-4 right-3">
+      <div className="relative flex basis-2/6 justify-center px-3">
+        <div className="flex items-center gap-2 absolute top-4 right-3 z-10">
           <span className="font-mono font-semibold text-base">{item.price.toFixed(2)}€</span>
         <button
           onClick={() => onAdd(item)}
@@ -42,8 +43,11 @@ export default function TicketCard({ item, onAdd }) {
         </button>
         </div>
       </div>
-       <Image src={item.img} alt="hot-dog" width="200" imgStyle="absolute -bottom-12 -right-8" />
     </div>
+    
+      <Image src={item.img} alt="hot-dog" width="200" imgStyle="absolute -bottom-12 -right-4" />
+    
+     </div>
   );
 }
 

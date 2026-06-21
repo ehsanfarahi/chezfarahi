@@ -5,6 +5,7 @@ import Menu from "./components/Menu";
 import CartPanel from "./components/CartPanel";
 import ChatPanel from "./components/ChatPanel";
 import AiButton from "./components/AiButton";
+import { useCart } from "./context/CartContext";
 
 // Import components
 import { SocialMedias } from "./components";
@@ -26,43 +27,20 @@ function reducer(state, action) {
   }
 }
 
+ 
 export default function App() {
-  const [cart, setCart] = useState([]);
+  const { cart, addToCart, inc, dec, remove, cartCount } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
 
   // Use Reducer
   const [{ language }, dispatch] = useReducer(reducer, initialState);
 
-  const handleAdd = (item) => {
-    setCart((prev) => {
-      const existing = prev.find((i) => i.id === item.id);
-      if (existing) {
-        return prev.map((i) =>
-          i.id === item.id ? { ...i, qty: i.qty + 1 } : i,
-        );
-      }
-      return [...prev, { ...item, qty: 1 }];
-    });
+ const handleAdd = (item) => {
+    addToCart(item);
     setCartOpen(true);
   };
 
-  const handleInc = (id) =>
-    setCart((prev) =>
-      prev.map((i) => (i.id === id ? { ...i, qty: i.qty + 1 } : i)),
-    );
-
-  const handleDec = (id) =>
-    setCart((prev) =>
-      prev
-        .map((i) => (i.id === id ? { ...i, qty: i.qty - 1 } : i))
-        .filter((i) => i.qty > 0),
-    );
-
-  const handleRemove = (id) =>
-    setCart((prev) => prev.filter((i) => i.id !== id));
-
-  const cartCount = cart.reduce((sum, i) => sum + i.qty, 0);
 
   return (
       <div className="min-h-screen font-body">
@@ -73,15 +51,15 @@ export default function App() {
           open={cartOpen}
           onClose={() => setCartOpen(false)}
           cart={cart}
-          onInc={handleInc}
-          onDec={handleDec}
-          onRemove={handleRemove}
+          onInc={inc}
+          onDec={dec}
+          onRemove={remove}
         />
          <ChatPanel open={chatOpen} onClose={() => setChatOpen(false)} />
         <AiButton
           onClick={() => setChatOpen(true)}
         />
-        <SocialMedias />
+        <SocialMedias /> 
       </div>
   );
 }
