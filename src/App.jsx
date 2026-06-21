@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Menu from "./components/Menu";
 import CartPanel from "./components/CartPanel";
+import ChatPanel from "./components/ChatPanel";
 import AiButton from "./components/AiButton";
 
 // Import components
@@ -28,6 +29,7 @@ function reducer(state, action) {
 export default function App() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
 
   // Use Reducer
   const [{ language }, dispatch] = useReducer(reducer, initialState);
@@ -75,10 +77,9 @@ export default function App() {
           onDec={handleDec}
           onRemove={handleRemove}
         />
+         <ChatPanel open={chatOpen} onClose={() => setChatOpen(false)} />
         <AiButton
-          onClick={() =>
-            alert("Assistant IA — à venir dans la prochaine étape !")
-          }
+          onClick={() => setChatOpen(true)}
         />
         <SocialMedias />
       </div>

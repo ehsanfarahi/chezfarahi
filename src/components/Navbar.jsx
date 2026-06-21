@@ -11,8 +11,8 @@ export default function Navbar({ cartCount, onCartClick, language, dispatch }) {
     <header className="sticky top-0 z-30 bg-char/90 backdrop-blur border-b border-cream/10">
       <div className="max-w-3xl mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Image src={logo} alt="logo" imgStyle="pt-1 w-18 h-18" />
-          <span className="font-display text-xl font-bold text-marigold">Chez Farahi</span>
+          <Image src={logo} alt="logo" imgStyle="pt-1 w-18 h-18 -ml-2" />
+          <span className="font-display text-2xl font-bold text-marigold">Chez Farahi</span>
         </div>
         <div className="flex items-center gap-3">
           {/* <span className="hidden sm:flex items-center gap-1 text-xs text-mute/80">

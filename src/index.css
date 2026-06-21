@@ -68,3 +68,20 @@
   animation: gentle-pulse 2.4s ease-in-out infinite;
 }
 /* End - Animations for AI button */
+
+
+.input {
+  background-color: var(--color-char);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-cream);
+}
+.input::placeholder { color: rgba(232, 223, 211, 0.4); }
+.input-sm {
+  background-color: var(--color-char);
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-cream);
+}
