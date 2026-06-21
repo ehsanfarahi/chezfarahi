@@ -3,52 +3,63 @@ import { useNavigate } from "react-router-dom";
 
 // Components
 import { Image } from "./index";
-import hotDog from "../assets/hot-dog.png";
 
 export default function TicketCard({ item, onAdd }) {
   const navigate = useNavigate();
 
   return (
-     <div onClick={() => navigate(`/product/${item.id}`)} className="relative cursor-pointer hover:shadow-xl hover:shadow-black/40 transition-shadow">
-      <div className="relative flex bg-cream text-char 
-     shadow-lg shadow-black/30 rounded-4xl overflow-hidden"> 
-      {/* Left: info */}
-      <div className="p-4 basis-4/6">
-        <div className="flex items-center gap-2 mb-1">
-          {item.tag && (
-            <span className="text-[10px] uppercase tracking-wider font-semibold bg-marigold/90 text-char px-2 py-0.5 rounded-full">
-              {item.tag}
-            </span>
-          )}
-          {item.veg && (
-            <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-semibold text-herb">
-              <Leaf size={11} strokeWidth={2.5} /> Végé
-            </span>
-          )}
+    <div
+      onClick={() => navigate(`/product/${item.id}`)}
+      className="relative cursor-pointer hover:shadow-xl hover:shadow-black/40 transition-shadow"
+    >
+      <div
+        className="relative flex bg-cream text-char 
+     shadow-lg shadow-black/30 rounded-4xl overflow-hidden"
+      >
+        {/* Left: info */}
+        <div className="p-4 basis-4/6">
+          <div className="flex items-center gap-2 mb-1">
+            {item.tag && (
+              <span className="text-[10px] uppercase tracking-wider font-semibold bg-marigold/90 text-char px-2 py-0.5 rounded-full">
+                {item.tag}
+              </span>
+            )}
+            {item.veg && (
+              <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-semibold text-herb">
+                <Leaf size={11} strokeWidth={2.5} /> Végé
+              </span>
+            )}
+          </div>
+          <h3 className="font-display text-lg font-semibold leading-tight">
+            {item.name}
+          </h3>
+          <p className="text-sm text-char/70 mt-1 leading-snug">{item.desc}</p>
         </div>
-        <h3 className="font-display text-lg font-semibold leading-tight">{item.name}</h3>
-        <p className="text-sm text-char/70 mt-1 leading-snug">{item.desc}</p>
-      </div> 
 
-
-      {/* Right: price + add */}
-      <div className="relative flex basis-2/6 justify-center px-3">
-        <div className="flex items-center gap-2 absolute top-4 right-3 z-10">
-          <span className="font-mono font-semibold text-base">{item.price.toFixed(2)}€</span>
-        <button
-          onClick={() => onAdd(item)}
-          aria-label={`Ajouter ${item.name} au panier`}
-          className="w-9 h-9 rounded-full bg-chili text-cream flex items-center justify-center hover:bg-chili-dark active:scale-95 transition"
-        >
-          <Plus size={18} strokeWidth={2.5} />
-        </button>
+        {/* Right: price + add */}
+        <div className="relative flex basis-2/6 justify-center px-3">
+          <div className="flex items-center gap-2 absolute top-4 right-3 z-10">
+            <span className="font-mono font-semibold text-base">
+              {item.price.toFixed(2)}€
+            </span>
+            <button
+              onClick={() => onAdd(item)}
+              aria-label={`Ajouter ${item.name} au panier`}
+              className="w-9 h-9 rounded-full bg-chili text-cream flex items-center justify-center hover:bg-chili-dark active:scale-95 transition"
+            >
+              <Plus size={18} strokeWidth={2.5} />
+            </button>
+          </div>
         </div>
       </div>
+
+      <Image
+        src={item.img}
+        alt="hot-dog"
+        width="200"
+        imgStyle="absolute -bottom-12 -right-4"
+      />
     </div>
-    
-      <Image src={hotDog} alt="hot-dog" width="200" imgStyle="absolute -bottom-12 -right-4" />
-    
-     </div>
   );
 }
 
