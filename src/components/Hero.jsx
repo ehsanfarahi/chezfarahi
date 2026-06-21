@@ -18,11 +18,10 @@ export default function Hero() {
       </div>
 
       <h1 className="font-display text-4xl sm:text-5xl font-bold leading-[1.05] text-cream">
-        {t("hero.title_line1")} <span className="text-marigold">qualité,</span> tout simplement.
+        {t("hero.title_line1")} <span className="text-marigold">{t("hero.title_highlight")}</span> {t("hero.title_line2")}
       </h1>
       <p className="mt-4 text-mute/90 text-base sm:text-lg max-w-lg">
-        Samosas faits maison, sandwichs grillés à la minute, hot-dogs et frites
-        fraîches. Commandez maintenant, récupérez sur place.
+        {t("hero.subtitle")}
       </p>
 
       <div className="mt-6 flex flex-wrap gap-3">
@@ -41,7 +40,7 @@ export default function Hero() {
         className="mt-7 inline-flex items-center gap-2 bg-chili hover:bg-chili-dark text-cream font-semibold px-6 py-3 rounded-full transition active:scale-95"
       >
         <Sparkles size={16} />
-        Voir le menu du jour
+        {t("hero.cta")}
       </a>
     </section>
   );

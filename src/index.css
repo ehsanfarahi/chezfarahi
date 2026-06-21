@@ -48,3 +48,23 @@
 }
 .ticket-notch::before { left: -8px; }
 .ticket-notch::after { right: -8px; }
+
+/* Start - Animations for AI button */
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(250%) skewX(-20deg); }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(242, 169, 59, 0.5); }
+  50% { box-shadow: 0 0 0 10px rgba(242, 169, 59, 0); }
+}
+
+.animate-shimmer {
+  animation: shimmer-sweep 1.8s ease-in-out infinite;
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 2.4s ease-in-out infinite;
+}
+/* End - Animations for AI button */
