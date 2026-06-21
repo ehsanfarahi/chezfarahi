@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 // Components
 import { Image } from "./index";
+import hotDog from "../assets/hot-dog.png";
 
 export default function TicketCard({ item, onAdd }) {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ export default function TicketCard({ item, onAdd }) {
       </div>
     </div>
     
-      <Image src={item.img} alt="hot-dog" width="200" imgStyle="absolute -bottom-12 -right-4" />
+      <Image src={hotDog} alt="hot-dog" width="200" imgStyle="absolute -bottom-12 -right-4" />
     
      </div>
   );

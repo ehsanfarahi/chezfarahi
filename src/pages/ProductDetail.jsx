@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Heart, Share2, Minus, Plus, Flame, Leaf, Star, Check, ChevronDown } from "lucide-react";
 import { getProductById } from "../data/menu";
 
+import hotDog from "../assets/hot-dog.png";
+
 export default function ProductDetail({ onAdd }) {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -82,13 +84,9 @@ export default function ProductDetail({ onAdd }) {
 
       {/* Hero image: full width, ~36% viewport height, pinned to top */}
       <div ref={heroRef} className="relative w-full h-[36vh] sm:h-[40vh] overflow-hidden">
-        {product.img ? (
-          <img src={product.img} alt={product.name} className="w-full h-full object-cover" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-marigold/30 via-char-soft to-chili/20 flex items-center justify-center">
-            <span className="text-[5.5rem] sm:text-[7rem] drop-shadow-lg">{product.emoji}</span>
-          </div> 
-        )}
+       
+          <img src={hotDog} alt={product.name} className="w-full h-full object-cover" />
+       
         <div className="absolute inset-0 bg-gradient-to-t from-char via-transparent to-black/20 pointer-events-none" />
 
         {/* Top-left: go back */}
