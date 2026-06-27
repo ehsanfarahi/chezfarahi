@@ -13,6 +13,11 @@ export default function Menu({ onAdd }) {
         <h2 className="font-display text-2xl font-semibold text-cream">Le Menu</h2>
       </div>
 
+
+      {/* <div>
+        <p className="flex flex-col font-semibold text-xsm mb-10"><span>Bonjour !</span><span>Qu'avez-vous envie</span><span>de manger aujourd'hui ?</span></p>
+      </div> */}
+
       <div className="flex gap-2 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-none">
         {["Tous", ...categories].map((cat) => (
           <button
@@ -29,7 +34,7 @@ export default function Menu({ onAdd }) {
         ))}
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-6 max-sm:gap-12">
+      <div className="grid sm:grid-cols-2 gap-10 max-sm:gap-12">
         {filtered.map((item) => (
           <TicketCard img={item.img} key={item.id} item={item} onAdd={onAdd} />
         ))}

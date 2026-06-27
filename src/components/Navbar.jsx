@@ -10,9 +10,15 @@ export default function Navbar({ cartCount, onCartClick, language, dispatch }) {
   return (
     <header className="sticky top-0 z-30 bg-char/90 backdrop-blur border-b border-cream/10">
       <div className="max-w-3xl mx-auto px-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Image src={logo} alt="logo" imgStyle="pt-1 w-18 h-18 -ml-2" />
-          <span className="font-display text-2xl font-bold text-marigold">Chez Farahi</span>
+          <div className="flex flex-col leading-tight">
+            <span className=" text-2xl font-bold text-marigold font-bebas"><span className="text-cream font-poppins">Chez</span>Farahi</span>
+            <span className="text-[11.85px] text-mute/80 font-montserrat">
+              <span>Good Food,</span>
+              <span> Good Mood</span>
+            </span>
+          </div>
         </div>
         <div className="flex items-center gap-3">
           {/* <span className="hidden sm:flex items-center gap-1 text-xs text-mute/80">

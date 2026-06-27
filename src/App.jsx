@@ -1,14 +1,9 @@
 import { useReducer, useState } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Menu from "./components/Menu";
-import CartPanel from "./components/CartPanel";
-import ChatPanel from "./components/ChatPanel";
-import AiButton from "./components/AiButton";
 import { useCart } from "./context/CartContext";
+import { useMenuData } from "./hooks/useMenuData";
 
 // Import components
-import { SocialMedias } from "./components";
+import { SocialMedias, Navbar, Hero, Menu, CartPanel, ChatPanel, AiButton, PopularSection } from "./components";
 
 // Language
 import i18n from "./i18n";
@@ -33,6 +28,11 @@ export default function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
 
+  
+
+  const { menuItems } = useMenuData();
+console.log("menuItems:", menuItems); // ← add this temporarily
+
   // Use Reducer
   const [{ language }, dispatch] = useReducer(reducer, initialState);
 
@@ -46,6 +46,7 @@ export default function App() {
       <div className="min-h-screen font-body">
         <Navbar cartCount={cartCount} onCartClick={() => setCartOpen(true)} language={language} dispatch={dispatch} />
         <Hero />
+        <PopularSection onAdd={handleAdd} menuItems={menuItems} />
         <Menu onAdd={handleAdd} />
         <CartPanel
           open={cartOpen}

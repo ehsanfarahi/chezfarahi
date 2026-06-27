@@ -7,6 +7,8 @@ import App from './App.jsx'
 import Admin from "./pages/Admin.jsx";
 import ProductDetailRoute from './pages/ProductDetailRoute.jsx'
 import { CartProvider } from './context/CartContext.jsx'
+import ComboDetail from './pages/ComboDetail.jsx';
+import ComboDetailRoute from './pages/ComboDetailRoute.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,6 +18,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/product/:id" element={<ProductDetailRoute />} />
+        <Route path="/combo/:id" element={<ComboDetailRoute />} />
       </Routes>
     </BrowserRouter>
     </CartProvider>

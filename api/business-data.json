@@ -19,14 +19,87 @@
     "Les amateurs de piquant adorent le Hot-Dog Épicé avec sauce chili maison."
   ],
   "menu": [
-    { "id": "sam-01", "category": "Samosas", "name": "Samosa Agneau Épicé", "desc": "Agneau mijoté, oignons, coriandre, épices maison", "price": 4.5, "veg": false },
-    { "id": "sam-02", "category": "Samosas", "name": "Samosa Légumes", "desc": "Pommes de terre, petits pois, cumin, curcuma", "price": 3.5, "veg": true },
-    { "id": "san-01", "category": "Sandwichs", "name": "Sandwich Poulet Mariné", "desc": "Poulet grillé, sauce yaourt-menthe, crudités, pain maison", "price": 7.5, "veg": false },
-    { "id": "san-02", "category": "Sandwichs", "name": "Sandwich Falafel", "desc": "Falafels croustillants, houmous, légumes frais", "price": 6.5, "veg": true },
-    { "id": "hd-01", "category": "Hot-Dogs", "name": "Hot-Dog Classique", "desc": "Saucisse grillée, oignons caramélisés, moutarde", "price": 6.0, "veg": false },
-    { "id": "hd-02", "category": "Hot-Dogs", "name": "Hot-Dog Épicé", "desc": "Saucisse, sauce chili maison, jalapeños", "price": 6.5, "veg": false },
-    { "id": "fr-01", "category": "Frites", "name": "Frites Maison", "desc": "Coupées et frites sur place, sel fin", "price": 3.5, "veg": true },
-    { "id": "fr-02", "category": "Frites", "name": "Frites Épicées", "desc": "Épices maison, sauce chili en option", "price": 4.0, "veg": true }
+    {
+      "id": "sam-01",
+      "category": "Samosas",
+      "name": "Samosa Agneau Épicé",
+      "desc": "Agneau mijoté, oignons, coriandre, épices maison",
+      "price": 4.5,
+      "discount": 0.5,
+      "veg": false
+    },
+    {
+      "id": "sam-02",
+      "category": "Samosas",
+      "name": "Samosa Légumes",
+      "desc": "Pommes de terre, petits pois, cumin, curcuma",
+      "price": 3.5,
+      "discount": 0.5,
+      "veg": true
+    },
+    {
+      "id": "san-01",
+      "category": "Sandwichs",
+      "name": "Sandwich Poulet Mariné",
+      "desc": "Poulet grillé, sauce yaourt-menthe, crudités, pain maison",
+      "price": 7.5,
+      "discount": 0.5,
+      "veg": false
+    },
+    {
+      "id": "san-02",
+      "category": "Sandwichs",
+      "name": "Sandwich Falafel",
+      "desc": "Falafels croustillants, houmous, légumes frais",
+      "price": 6.5,
+      "discount": 0.5,
+      "veg": true
+    },
+    {
+      "id": "hd-01",
+      "category": "Hot-Dogs",
+      "name": "Hot-Dog Classique",
+      "desc": "Saucisse grillée, oignons caramélisés, moutarde",
+      "price": 6.0,
+      "discount": 0.5,
+      "veg": false
+    },
+    {
+      "id": "hd-02",
+      "category": "Hot-Dogs",
+      "name": "Hot-Dog Épicé",
+      "desc": "Saucisse, sauce chili maison, jalapeños",
+      "price": 6.5,
+      "discount": 0.5,
+      "veg": false
+    },
+    {
+      "id": "fr-01",
+      "category": "Frites",
+      "name": "Frites Maison",
+      "desc": "Coupées et frites sur place, sel fin",
+      "price": 3.5,
+      "discount": 0.5,
+      "veg": true
+    },
+    {
+      "id": "fr-02",
+      "category": "Frites",
+      "name": "Frites Épicées",
+      "desc": "Épices maison, sauce chili en option",
+      "price": 4.0,
+      "discount": 0.5,
+      "veg": true
+    },
+    {
+      "id": "drink-01",
+      "category": "Boissons",
+      "name": "Boisson au choix",
+      "desc": "Eau, soda ou jus de fruit",
+      "price": 2.0,
+      "discount": 0,
+      "veg": true
+    }
   ],
   "extraNotes": "Nous utilisons des produits frais et locaux quand c'est possible."
 }

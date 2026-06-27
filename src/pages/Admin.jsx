@@ -257,6 +257,19 @@ export default function Admin() {
                     />
                     Végé
                   </label>
+
+
+
+                  <input
+  type="number"
+  step="0.10"
+  min="0"
+  value={item.discount ?? 0}
+  onChange={(e) => updateField(["menu", idx, "discount"], parseFloat(e.target.value) || 0)}
+  placeholder="Remise (€)"
+  className="input-sm w-28"
+/>
+<label className="text-[10px] text-mute">Remise / article (€)</label>
                 </div>
               </div>
             ))}

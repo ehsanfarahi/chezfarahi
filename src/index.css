@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&family=Poppins:wght@600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=League+Spartan:wght@900&family=Sora:wght@700&display=swap');
+
+
+
 @theme {
   --font-display: "Fraunces", serif;
   --font-body: "Inter", sans-serif;
@@ -16,6 +22,13 @@
   --color-mute: #E8DFD3;
 
   --transition-property-position: position;
+
+  --font-poppins: "Poppins", sans-serif;
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+   --font-sora: "Sora", sans-serif;
+  --font-spartan: "League Spartan", sans-serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 /* Removed @custom-variant rules (not standard CSS). Use regular @media queries or configure variants in Tailwind config instead. */
