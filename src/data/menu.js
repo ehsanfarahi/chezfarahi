@@ -5,7 +5,7 @@ export const menuItems = [
     id: "sam-01",
     category: "Samosas",
     name: "Samosa Agneau Épicé",
-    img: "../src/assets/samosa.png",
+    img: "images/samosa.png",
     tag: "Best-seller",
     desc: "Agneau mijoté, oignons, coriandre, épices maison",
     longDesc:
@@ -25,7 +25,7 @@ export const menuItems = [
     id: "sam-02",
     category: "Samosas",
     name: "Samosa Légumes",
-    img: "../src/assets/spring_rolls.png",
+    img: "images/spring_rolls.png",
     tag: "Végé",
     desc: "Pommes de terre, petits pois, cumin, curcuma",
     longDesc:
@@ -45,7 +45,7 @@ export const menuItems = [
     id: "san-01",
     category: "Sandwichs",
     name: "Sandwich Poulet Mariné",
-    img: "../src/assets/sandwiche.png",
+    img: "images/sandwiche.png",
     tag: "Signature",
     desc: "Poulet grillé, sauce yaourt-menthe, crudités, pain maison",
     longDesc:
@@ -65,7 +65,7 @@ export const menuItems = [
     id: "san-02",
     category: "Sandwichs",
     name: "Sandwich Falafel",
-    img: "../src/assets/chicken_chow_mein.png",
+    img: "images/chicken_chow_mein.png",
     tag: "Végé",
     desc: "Falafels croustillants, houmous, légumes frais",
     longDesc:
@@ -85,7 +85,7 @@ export const menuItems = [
     id: "hd-01",
     category: "Hot-Dogs",
     name: "Hot-Dog Classique",
-    img: "../src/assets/hot-dog.png",
+    img: "images/hot-dog.png",
     tag: "",
     desc: "Saucisse grillée, oignons caramélisés, moutarde",
     longDesc:
@@ -105,7 +105,7 @@ export const menuItems = [
     id: "hd-02",
     category: "Hot-Dogs",
     name: "Hot-Dog Épicé",
-    img: "../src/assets/samosa.png",
+    img: "images/samosa.png",
     tag: "Piquant",
     desc: "Saucisse, sauce chili maison, jalapeños",
     longDesc:
@@ -125,7 +125,7 @@ export const menuItems = [
     id: "fr-01",
     category: "Frites",
     name: "Frites Maison",
-    img: "../src/assets/fries.png",
+    img: "images/fries.png",
     tag: "",
     desc: "Coupées et frites sur place, sel fin",
     longDesc:
@@ -145,7 +145,7 @@ export const menuItems = [
     id: "fr-02",
     category: "Frites",
     name: "Frites Épicées",
-    img: "../src/assets/fries.png",
+    img: "images/fries.png",
     tag: "Piquant",
     desc: "Épices maison, sauce chili en option",
     longDesc:
