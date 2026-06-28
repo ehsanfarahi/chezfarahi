@@ -27,7 +27,7 @@ export default function PopularSection({ onAdd, menuItems }) {
   if (!menuItems || menuItems.length === 0) return null;
 
   return (
-    <section className="max-w-3xl mx-auto px-8 pb-14 mt-8">
+    <section className="max-w-5xl mx-auto px-8 pb-14 mt-8">
       <div className="flex items-start justify-between mb-5">
         <div className="-ml-3.5">
           <p className="text-marigold text-xs font-semibold uppercase tracking-[0.18em] mb-1">

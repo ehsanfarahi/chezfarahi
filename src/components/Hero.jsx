@@ -6,8 +6,13 @@ import { useTranslation } from "react-i18next";
 export default function Hero() {
   const { t } = useTranslation();
   return (
-    <section className="relative max-w-3xl mx-auto px-4 pt-10 pb-8">
-      <div className="flex items-center gap-2 mb-4">
+    <section className="relative max-w-5xl mx-auto px-4 pt-10 pb-8">
+
+      <div className="absolute right-0 top-0 bottom-0 w-xl bg-[url('src/assets/all-foods.png')] bg-no-repeat bg-contain opacity-75 max-sm:hidden"></div>
+
+
+      <div className="max-w-[60%] max-sm:max-w-full">
+        <div className="flex items-center gap-2 mb-4">
         <span className="relative flex h-2.5 w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-herb opacity-75" />
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-herb" />
@@ -24,7 +29,7 @@ export default function Hero() {
         {t("hero.subtitle")}
       </p>
 
-      <div className="mt-6 flex flex-wrap gap-3">
+      <div className="mt-32 flex flex-wrap gap-3">
         <div className="flex items-center gap-2 bg-char-soft border border-cream/10 rounded-full px-4 py-2 text-sm text-mute">
           <MapPin size={15} className="text-marigold" />
           Halle aux Houblons, Haguenau
@@ -42,6 +47,7 @@ export default function Hero() {
         <Sparkles size={16} />
         {t("hero.cta")}
       </a>
+      </div>
     </section>
   );
 }

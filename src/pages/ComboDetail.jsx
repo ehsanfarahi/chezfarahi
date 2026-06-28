@@ -33,7 +33,7 @@ export default function ComboDetail({ onAdd }) {
   };
 
   return (
-    <div className="min-h-screen bg-char text-cream pb-28">
+    <div className="min-h-screen max-w-5xl mx-auto bg-char text-cream pb-28">
       {/* Hero */}
       <div className="relative w-full h-[36vh] sm:h-[40vh] overflow-hidden">
         <div className="w-full h-full bg-gradient-to-br from-marigold/30 via-char-soft to-chili/20 flex items-center justify-center">
@@ -172,7 +172,7 @@ export default function ComboDetail({ onAdd }) {
       </div>
 
       {/* Sticky bottom bar */}
-      <div className="fixed bottom-0 inset-x-0 z-40 bg-char-soft border-t border-cream/10 px-5 py-4 flex items-center justify-between gap-4">
+      <div className="fixed max-w-5xl mx-auto bottom-0 inset-x-0 z-40 bg-char-soft border-t border-cream/10 px-5 py-4 flex items-center justify-between gap-4">
         <div>
           <p className="text-xs text-mute/60">Total ({qty} combo{qty > 1 ? "s" : ""})</p>
           <div className="flex items-baseline gap-1.5">

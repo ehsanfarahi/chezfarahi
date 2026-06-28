@@ -29,6 +29,21 @@
    --font-sora: "Sora", sans-serif;
   --font-spartan: "League Spartan", sans-serif;
   --font-inter: "Inter", sans-serif;
+
+
+    --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+ 
+  --color-char: #1B1411;
+  --color-char-soft: #2A211C;
+  --color-cream: #FAF6F0;
+  --color-marigold: #F2A93B;
+  --color-marigold-light: #F7C778;
+  --color-chili: #C8432A;
+  --color-chili-dark: #A6341E;
+  --color-herb: #5C7A5E;
+  --color-mute: #E8DFD3;
 }
 
 /* Removed @custom-variant rules (not standard CSS). Use regular @media queries or configure variants in Tailwind config instead. */
@@ -61,6 +76,27 @@
 }
 .ticket-notch::before { left: -8px; }
 .ticket-notch::after { right: -8px; }
+
+
+.admin-input {
+  background-color: var(--color-char);
+  border: 1px solid rgba(232, 223, 211, 0.1);
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-cream);
+  transition: border-color 0.15s;
+}
+.admin-input:focus {
+  outline: none;
+  border-color: rgba(242, 169, 59, 0.5);
+}
+.admin-input::placeholder {
+  color: rgba(232, 223, 211, 0.3);
+}
+select.admin-input option {
+  background-color: #2A211C;
+}
 
 /* Start - Animations for AI button */
 @keyframes shimmer-sweep {

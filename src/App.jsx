@@ -24,7 +24,7 @@ function reducer(state, action) {
 
  
 export default function App() {
-  const { cart, addToCart, inc, dec, remove, cartCount } = useCart();
+  const { cart, addToCart, inc, dec, remove, cartCount, clearCart } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
 
@@ -41,6 +41,13 @@ console.log("menuItems:", menuItems); // ← add this temporarily
     setCartOpen(true);
   };
 
+  const handleReorder = (items) => {
+  items.forEach((item) => addToCart(item));
+  setCartOpen(true);
+};
+
+  // const clearCart = () => setCart([]); CartContext equivalent is Used
+
 
   return (
       <div className="min-h-screen font-body">
@@ -55,7 +62,10 @@ console.log("menuItems:", menuItems); // ← add this temporarily
           onInc={inc}
           onDec={dec}
           onRemove={remove}
+          onClearCart={clearCart}
+          onReorder={handleReorder}
         />
+
          <ChatPanel open={chatOpen} onClose={() => setChatOpen(false)} />
         <AiButton
           onClick={() => setChatOpen(true)}

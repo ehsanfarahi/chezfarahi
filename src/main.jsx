@@ -9,6 +9,7 @@ import ProductDetailRoute from './pages/ProductDetailRoute.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import ComboDetail from './pages/ComboDetail.jsx';
 import ComboDetailRoute from './pages/ComboDetailRoute.jsx';
+import AdminOrders from "./pages/AdminOrders.jsx"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin" element={<Admin />} />
         <Route path="/product/:id" element={<ProductDetailRoute />} />
         <Route path="/combo/:id" element={<ComboDetailRoute />} />
+        <Route path='/admin/orders' element={<AdminOrders />} />
       </Routes>
     </BrowserRouter>
     </CartProvider>

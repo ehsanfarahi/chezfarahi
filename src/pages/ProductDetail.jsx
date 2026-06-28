@@ -52,7 +52,7 @@ export default function ProductDetail({ onAdd }) {
   };
 
   return (
-    <div className="min-h-screen bg-char text-cream pb-28">
+    <div className="max-w-5xl mx-auto min-h-screen bg-char text-cream pb-28">
       {/* Scroll-collapsing mini header, appears once hero is scrolled past */}
       <DetailHeader scrolled={scrolled} product={product} navigate={navigate} />
 
@@ -367,7 +367,7 @@ function PromotionBanner({ product }) {
 
 function DetailStickyBottom({ total, handleAdd, justAdded }) {
   return (
-    <div className="fixed bottom-0 inset-x-0 z-40 bg-char-soft border-t border-cream/10 px-5 py-4 flex items-center justify-between gap-4">
+    <div className="fixed max-w-5xl mx-auto bottom-0 inset-x-0 z-40 bg-char-soft border-t border-cream/10 px-5 py-4 flex items-center justify-between gap-4">
       <div>
         <p className="text-xs text-mute/60">Total</p>
         <p className="font-mono text-lg font-semibold">{total}€</p>

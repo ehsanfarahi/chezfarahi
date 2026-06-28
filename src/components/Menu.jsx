@@ -8,7 +8,7 @@ export default function Menu({ onAdd }) {
     active === "Tous" ? menuItems : menuItems.filter((i) => i.category === active);
 
   return (
-    <section id="menu" className="max-w-3xl mx-auto px-4 pb-16">
+    <section id="menu" className="max-w-5xl mx-auto px-4 pb-16">
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-display text-2xl font-semibold text-cream">Le Menu</h2>
       </div>

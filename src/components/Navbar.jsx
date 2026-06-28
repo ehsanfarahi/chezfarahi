@@ -9,7 +9,7 @@ import { Image, Languages } from "./index";
 export default function Navbar({ cartCount, onCartClick, language, dispatch }) {
   return (
     <header className="sticky top-0 z-30 bg-char/90 backdrop-blur border-b border-cream/10">
-      <div className="max-w-3xl mx-auto px-4 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center gap-1">
           <Image src={logo} alt="logo" imgStyle="pt-1 w-18 h-18 -ml-2" />
           <div className="flex flex-col leading-tight">
