@@ -3,8 +3,11 @@ import { LogIn } from "lucide-react";
 import AdminLayout from "../admin/AdminLayout";
 import Dashboard from "../admin/Dashboard";
 import MenuManager from "../admin/MenuManager";
+import ComboManager from "../admin/ComboManager";
 import OrdersManager from "../admin/OrdersManager";
 import Settings from "../admin/Settings";
+
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 export default function Admin() {
   const [token, setToken] = useState(localStorage.getItem("adminToken") || "");
@@ -14,56 +17,35 @@ export default function Admin() {
 
   const handleLogin = async () => {
     setError("");
-    // Quick verify against admin endpoint
     try {
-      const res = await fetch(
-        `${import.meta.env.VITE_API_URL || ""}/api/admin/business`,
-        { headers: { "x-admin-token": tokenInput } },
-      );
-      if (res.status === 401) {
-        setError("Code d'acces incorrect.");
-        return;
-      }
+      const res = await fetch(`${API_URL}/api/admin`, { headers: { "x-admin-token": tokenInput } });
+      if (res.status === 401) { setError("Code d'accès incorrect."); return; }
       localStorage.setItem("adminToken", tokenInput);
       setToken(tokenInput);
     } catch {
-      setError("Impossible de verifier le code. Verifiez votre connexion.");
+      setError("Impossible de vérifier le code.");
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("adminToken");
-    setToken("");
-    setTokenInput("");
-  };
+  const handleLogout = () => { localStorage.removeItem("adminToken"); setToken(""); setTokenInput(""); };
 
-  // Login screen
   if (!token) {
     return (
       <div className="min-h-screen bg-char flex items-center justify-center px-4">
         <div className="w-full max-w-sm">
           <div className="text-center mb-8">
-            <span className="text-5xl">Car Emoji</span>
-            <h1 className="font-display text-3xl font-bold text-cream mt-3">
-              Chez Farahi
-            </h1>
+            <span className="text-5xl">🚚</span>
+            <h1 className="font-display text-3xl font-bold text-cream mt-3">Le Camion Doré</h1>
             <p className="text-mute/60 text-sm mt-1">Espace administration</p>
           </div>
           <div className="bg-char-soft rounded-2xl p-6 border border-cream/10">
-            <label className="text-xs text-mute/60 uppercase tracking-wider mb-2 block">
-              Code d'acces
-            </label>
-            <input
-              type="password"
-              value={tokenInput}
-              onChange={(e) => setTokenInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-              placeholder="************"
+            <label className="text-xs text-mute/60 uppercase tracking-wider mb-2 block">Code d'accès</label>
+            <input type="password" value={tokenInput} onChange={(e) => setTokenInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleLogin()} placeholder="••••••••••••"
               className="w-full bg-char rounded-xl px-4 py-3 text-cream placeholder:text-mute/30 focus:outline-none focus:ring-2 focus:ring-marigold/50 mb-3"
             />
             {error && <p className="text-chili text-xs mb-3">{error}</p>}
-            <button
-              onClick={handleLogin}
+            <button onClick={handleLogin}
               className="w-full flex items-center justify-center gap-2 bg-marigold hover:bg-marigold-light text-char font-semibold py-3 rounded-full transition active:scale-95"
             >
               <LogIn size={16} /> Se connecter
@@ -74,12 +56,12 @@ export default function Admin() {
     );
   }
 
-  // Render page content
   const pageContent = {
     dashboard: <Dashboard />,
-    menu: <MenuManager token={token} />,
-    orders: <OrdersManager />,
-    settings: <Settings token={token} />,
+    menu:      <MenuManager token={token} />,
+    combos:    <ComboManager token={token} />,
+    orders:    <OrdersManager token={token} />,
+    settings:  <Settings token={token} />,
   }[page] || <Dashboard />;
 
   return (
@@ -88,6 +70,8 @@ export default function Admin() {
     </AdminLayout>
   );
 }
+
+
 
 // import { useState, useEffect } from "react";
 // import { Plus, Trash2, Save, LogIn, ShoppingBag } from "lucide-react";

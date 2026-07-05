@@ -1,6 +1,8 @@
-import { useReducer, useState } from "react";
+import { useReducer, useState, useEffect } from "react";
 import { useCart } from "./context/CartContext";
 import { useMenuData } from "./hooks/useMenuData";
+
+import OrderReadyBanner from "./components/OrderReadyBanner";
 
 // Import components
 import { SocialMedias, Navbar, Hero, Menu, CartPanel, ChatPanel, AiButton, PopularSection } from "./components";
@@ -27,6 +29,23 @@ export default function App() {
   const { cart, addToCart, inc, dec, remove, cartCount, clearCart } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
+
+  const [readyOrderNumber, setReadyOrderNumber] = useState(null);
+
+  useEffect(() => {
+  // Check localStorage every 3s for order-ready status
+  // (catches push notifications that fire when app is open)
+  const check = () => {
+    const raw = localStorage.getItem("camion_pending_order");
+    if (!raw) return;
+    const pending = JSON.parse(raw);
+    if (pending.status === "ready" && pending.orderNumber) {
+      setReadyOrderNumber(pending.orderNumber);
+    }
+  };
+  const interval = setInterval(check, 3000);
+  return () => clearInterval(interval);
+}, []);
 
   
 
@@ -71,6 +90,11 @@ console.log("menuItems:", menuItems); // ← add this temporarily
           onClick={() => setChatOpen(true)}
         />
         <SocialMedias /> 
+
+        <OrderReadyBanner
+  orderNumber={readyOrderNumber}
+  onClose={() => setReadyOrderNumber(null)}
+/>
       </div>
   );
 }

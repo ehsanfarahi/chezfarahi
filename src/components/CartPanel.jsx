@@ -201,6 +201,10 @@ export default function CartPanel({ open, onClose, cart, onInc, onDec, onRemove,
   open={showQR}
   onClose={() => setShowQR(false)}
   onConfirmed={onClearCart}
+  onOrderReady={(num) => {
+    // Will be caught by the global watcher in App.jsx
+    localStorage.setItem("camion_pending_order", JSON.stringify({ orderNumber: num, status: "ready" }));
+  }}
 />
         </div>
       </aside>

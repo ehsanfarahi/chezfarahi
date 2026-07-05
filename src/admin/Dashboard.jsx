@@ -90,7 +90,7 @@ export default function Dashboard() {
 
       {/* Stat cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <StatCard
+        {/* <StatCard
           icon={ShoppingBag}
           label="Commandes aujourd'hui"
           value={stats.todayCount}
@@ -117,7 +117,30 @@ export default function Dashboard() {
           value={stats.peakHour !== undefined ? `${stats.peakHour}h` : "—"}
           sub="aujourd'hui"
           color="text-chili"
+        /> */}
+
+        <StatCard 
+        icon={ShoppingBag} 
+        label="Commandes aujourd'hui" 
+        value={stats.todayCount} sub={`${stats.allCount} au total`} color="text-marigold" 
         />
+        <StatCard 
+        icon={TrendingUp} 
+        label="Recettes aujourd'hui" 
+        value={`${stats.todayRevenue.toFixed(2)}€`} 
+        sub={`${stats.allRevenue.toFixed(2)}€ au total`} color="text-herb" 
+        /> 
+        <StatCard 
+        icon={ShoppingBag} 
+        label="Panier moyen" 
+        value={`${stats.avgOrder.toFixed(2)}€`} 
+        sub="toutes commandes" 
+        color="text-marigold-light" 
+        />
+        <StatCard 
+        icon={Clock} 
+        label="Heure de pointe" 
+        value={stats.peakHour !== undefined ? `${stats.peakHour}h` : "—"} sub="aujourd'hui" color="text-chili" />
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6 mb-6">

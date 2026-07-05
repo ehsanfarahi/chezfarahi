@@ -8,11 +8,13 @@ import {
   Menu,
   X,
   ChevronRight,
+  PackagePlus,
 } from "lucide-react";
 
 const NAV = [
   { id: "dashboard", label: "Tableau de bord", icon: LayoutDashboard },
   { id: "menu",      label: "Menu",             icon: UtensilsCrossed },
+  { id: "combos",    label: "Combos",            icon: PackagePlus },
   { id: "orders",    label: "Commandes",         icon: ClipboardList },
   { id: "settings",  label: "Paramètres",        icon: Settings },
 ];
@@ -41,20 +43,15 @@ export default function AdminLayout({ page, setPage, onLogout, children }) {
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
-      {/* Brand */}
       <div className="px-5 py-6 border-b border-cream/10">
         <p className="text-marigold text-[10px] font-semibold uppercase tracking-widest mb-0.5">
           Administration
         </p>
         <h1 className="font-display text-xl font-bold text-cream">Le Camion Doré</h1>
       </div>
-
-      {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         {NAV.map((item) => <NavItem key={item.id} item={item} />)}
       </nav>
-
-      {/* Logout */}
       <div className="px-3 py-4 border-t border-cream/10">
         <button
           onClick={onLogout}
@@ -74,7 +71,7 @@ export default function AdminLayout({ page, setPage, onLogout, children }) {
         <SidebarContent />
       </aside>
 
-      {/* Mobile sidebar overlay */}
+      {/* Mobile overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 z-40 flex lg:hidden">
           <div className="absolute inset-0 bg-black/70" onClick={() => setMobileOpen(false)} />
@@ -103,10 +100,9 @@ export default function AdminLayout({ page, setPage, onLogout, children }) {
           <span className="font-display font-semibold text-cream">
             {NAV.find((n) => n.id === page)?.label}
           </span>
-          <div className="w-9" /> {/* spacer */}
+          <div className="w-9" />
         </header>
 
-        {/* Page content */}
         <main className="flex-1 p-4 lg:p-8 overflow-y-auto">
           {children}
         </main>

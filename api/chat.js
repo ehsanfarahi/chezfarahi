@@ -1,5 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
-import businessData from "./business-data.json" with { type: "json" };
+// import businessData from "./business-data.json" with { type: "json" };
+import { getBusinessData } from "./redis.js";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 const MODEL = "gemini-2.5-flash";
@@ -64,7 +65,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "messages array required" });
     }
 
-    const systemPrompt = buildSystemPrompt(businessData, lang);
+    // const systemPrompt = buildSystemPrompt(businessData, lang);
+
+    const businessData = await getBusinessData();
+const systemPrompt = buildSystemPrompt(businessData, lang);
 
     const response = await ai.models.generateContent({
       model: MODEL,
