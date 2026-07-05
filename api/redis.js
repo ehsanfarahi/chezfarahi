@@ -1,4 +1,7 @@
 import { createClient } from "redis";
+import { createRequire } from "module";
+const _require = createRequire(import.meta.url);
+
 
 let client = null;
 
@@ -17,7 +20,7 @@ export async function getBusinessData() {
   const redis = await getRedisClient();
   const raw = await redis.get(BUSINESS_KEY);
   if (!raw) {
-    const { default: seed } = await import("./business-data.json", { with: { type: "json" } });
+    const seed = _require("./business-data.json");
     await redis.set(BUSINESS_KEY, JSON.stringify(seed));
     return seed;
   }

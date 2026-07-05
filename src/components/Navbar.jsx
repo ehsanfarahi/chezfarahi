@@ -1,7 +1,7 @@
 import { ShoppingBag, MapPin } from "lucide-react";
 
 // Import logo
-import logo from "../assets/logo.png" 
+import logo from "/images/logo.png"; 
 
 // Import components
 import { Image, Languages } from "./index";
