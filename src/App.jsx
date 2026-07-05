@@ -32,20 +32,36 @@ export default function App() {
 
   const [readyOrderNumber, setReadyOrderNumber] = useState(null);
 
-  useEffect(() => {
+  // useEffect(() => {
   // Check localStorage every 3s for order-ready status
   // (catches push notifications that fire when app is open)
+//   const check = () => {
+//     const raw = localStorage.getItem("camion_pending_order");
+//     if (!raw) return;
+//     const pending = JSON.parse(raw);
+//     if (pending.status === "ready" && pending.orderNumber) {
+//       setReadyOrderNumber(pending.orderNumber);
+//     }
+//   };
+//   const interval = setInterval(check, 3000);
+//   return () => clearInterval(interval);
+// }, []);
+
+useEffect(() => {
   const check = () => {
-    const raw = localStorage.getItem("camion_pending_order");
-    if (!raw) return;
-    const pending = JSON.parse(raw);
-    if (pending.status === "ready" && pending.orderNumber) {
-      setReadyOrderNumber(pending.orderNumber);
-    }
+    try {
+      const raw = localStorage.getItem("camion_pending_order");
+      if (!raw) return;
+      const pending = JSON.parse(raw);
+      if (pending.status === "ready" && pending.orderNumber) {
+        setReadyOrderNumber(pending.orderNumber);
+      }
+    } catch {}
   };
   const interval = setInterval(check, 3000);
   return () => clearInterval(interval);
 }, []);
+
 
   
 
