@@ -112,8 +112,9 @@ export default function OrderQRModal({
 
   return (
     <>
+    {/* Changed bg-black/80 to black/10*/}
       <div
-        className="fixed inset-0 bg-black/80 z-50"
+        className="fixed inset-0 bg-black/10 z-50"
         onClick={onClose}
       />
       {/* Backdrop */}
