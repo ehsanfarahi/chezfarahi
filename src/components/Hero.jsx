@@ -1,6 +1,15 @@
 import { Clock, MapPin, Sparkles } from "lucide-react";
 
+
+
+
+
+
 import { useNavigate } from "react-router-dom";
+
+
+
+
 
 
 // Translation
@@ -9,11 +18,19 @@ import { useTranslation } from "react-i18next";
 export default function Hero() {
   const { t } = useTranslation();
 
+
+
+
   const navigate = useNavigate();
+
+
+
+
+
 
   return (
     <section className="relative max-w-5xl mx-auto px-4 pt-10 pb-8">
-      <div className="absolute right-0 top-0 bottom-0 w-xl bg-[url('images/all-foods.png')] bg-no-repeat bg-contain opacity-75 max-sm:hidden"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-xl bg-[url('src/assets/all-foods.png')] bg-no-repeat bg-contain opacity-75 max-sm:hidden"></div>
 
       <div className="max-w-[60%] max-sm:max-w-full">
         <div className="flex items-center gap-2 mb-4">
