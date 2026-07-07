@@ -1,11 +1,21 @@
 import { useState } from "react";
-import { categories, menuItems } from "../data/menu";
+// import { categories, menuItems } from "../data/menu";
 import TicketCard from "./TicketCard";
 
+import { useMenuData } from "../hooks/useMenuData"
+
 export default function Menu({ onAdd }) {
+  const { menuItems, loading } = useMenuData();
+  const categories = [...new Set(menuItems.map((i) => i.category))];
   const [active, setActive] = useState("Tous");
   const filtered =
     active === "Tous" ? menuItems : menuItems.filter((i) => i.category === active);
+
+      if (loading) return (
+    <div className="flex justify-center py-12">
+      <span className="text-4xl animate-bounce">🍟</span>
+    </div>
+  );
 
   return (
     <section id="menu" className="max-w-5xl mx-auto px-4 pb-16">

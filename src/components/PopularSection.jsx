@@ -1,13 +1,19 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Plus, Star } from "lucide-react";
-import { popularCombos, calcComboPrice } from "../data/combos";
+// import { popularCombos, calcComboPrice } from "../data/combos";
+
+import { useCombosData } from "../hooks/useCombosData";
 
 export default function PopularSection({ onAdd, menuItems }) {
   const navigate = useNavigate();
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const { combos, loading: combosLoading, calcComboPrice } = useCombosData();
+
+  if (!menuItems?.length || combosLoading || !combos.length) return null;
 
   const updateScrollState = () => {
     const el = scrollRef.current;
@@ -60,7 +66,7 @@ export default function PopularSection({ onAdd, menuItems }) {
         onScroll={updateScrollState}
         className="flex gap-4 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-none snap-x snap-mandatory"
       >
-        {popularCombos.map((combo) => {
+        {combos.map((combo) => {
           const pricing = calcComboPrice(combo, menuItems);
           return (
             <ComboCard

@@ -4,6 +4,8 @@ import {
   Leaf, Flame, Image, Link, Clock, Eye, EyeOff,
 } from "lucide-react";
 
+import { compressImage, uploadToCloudinary } from "../utils/imageUtils";
+
 const API_URL = import.meta.env.VITE_API_URL || "";
 const CATEGORIES = ["Samosas", "Sandwichs", "Hot-Dogs", "Frites", "Boissons", "Desserts"];
 const ALLERGEN_OPTIONS = ["Gluten", "Lait", "Oeufs", "Arachides", "Soja", "Fruits à coque", "Sésame", "Moutarde"];
@@ -19,7 +21,7 @@ function Label({ children }) {
   return <p className="text-[11px] text-mute/60 uppercase tracking-wider mb-1.5">{children}</p>;
 }
 
-function ItemForm({ item, setItem, onSave, onCancel, saveLabel, saving }) {
+function ItemForm({ item, setItem, onSave, onCancel, saveLabel, saving, token }) {
   const fileRef = useRef(null);
   const [imageTab, setImageTab] = useState("url");
 
@@ -43,25 +45,42 @@ function ItemForm({ item, setItem, onSave, onCancel, saveLabel, saving }) {
     }));
   };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      const img = document.createElement("img");
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const MAX = 400;
-        const ratio = Math.min(MAX / img.width, MAX / img.height, 1);
-        canvas.width = img.width * ratio;
-        canvas.height = img.height * ratio;
-        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-        setItem((prev) => ({ ...prev, image: canvas.toDataURL("image/jpeg", 0.75) }));
-      };
-      img.src = ev.target.result;
-    };
-    reader.readAsDataURL(file);
-  };
+  const [uploading, setUploading] = useState(false);
+
+  const handleFileUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  setUploading(true);
+  try {
+    const compressed = await compressImage(file, 800, 0.82);
+    const url = await uploadToCloudinary(compressed, token, "chezfarahi/menu");
+    setItem((prev) => ({ ...prev, image: url }));
+  } catch (err) {
+    alert("Erreur upload: " + err.message);
+  } finally {
+    setUploading(false);
+  }
+};
+
+  // const handleFileUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (!file) return;
+  //   const reader = new FileReader();
+  //   reader.onload = (ev) => {
+  //     const img = document.createElement("img");
+  //     img.onload = () => {
+  //       const canvas = document.createElement("canvas");
+  //       const MAX = 400;
+  //       const ratio = Math.min(MAX / img.width, MAX / img.height, 1);
+  //       canvas.width = img.width * ratio;
+  //       canvas.height = img.height * ratio;
+  //       canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+  //       setItem((prev) => ({ ...prev, image: canvas.toDataURL("image/jpeg", 0.75) }));
+  //     };
+  //     img.src = ev.target.result;
+  //   };
+  //   reader.readAsDataURL(file);
+  // };
 
   return (
     <div className="space-y-5">
@@ -132,11 +151,11 @@ function ItemForm({ item, setItem, onSave, onCancel, saveLabel, saving }) {
         ) : (
           <>
             <input ref={fileRef} type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
-            <button onClick={() => fileRef.current?.click()}
+            <button onClick={() => fileRef.current?.click()} disabled={uploading}
               className="w-full border-2 border-dashed border-cream/15 hover:border-marigold/40 rounded-xl py-4 text-sm text-mute/60 hover:text-mute transition flex items-center justify-center gap-2"
             >
               <Image size={16} />
-              {item.image?.startsWith("data:") ? "Image chargée ✓ (cliquez pour changer)" : "Cliquez pour choisir une image"}
+              {uploading ? "Upload en cours..." : item.image && !item.image.startsWith("data:") ? "Image chargée ✓" : "Cliquez pour choisir une image"}
             </button>
           </>
         )}
@@ -313,7 +332,7 @@ export default function MenuManager({ token }) {
             <h3 className="font-display font-semibold text-marigold">Nouvel article</h3>
             <button onClick={() => setAdding(false)}><X size={18} className="text-mute/50" /></button>
           </div>
-          <ItemForm item={newItem} setItem={setNewItem} onSave={addItem} onCancel={() => { setAdding(false); setNewItem(EMPTY_ITEM); }} saveLabel="Ajouter au menu" saving={saving} />
+          <ItemForm item={newItem} setItem={setNewItem} onSave={addItem} onCancel={() => { setAdding(false); setNewItem(EMPTY_ITEM); }} saveLabel="Ajouter au menu" saving={saving} token={token} />
         </div>
       )}
 
@@ -326,7 +345,7 @@ export default function MenuManager({ token }) {
                   <h3 className="font-display font-semibold text-marigold">Modifier</h3>
                   <button onClick={cancelEdit}><X size={18} className="text-mute/50" /></button>
                 </div>
-                <ItemForm item={editDraft} setItem={setEditDraft} onSave={saveEdit} onCancel={cancelEdit} saveLabel="Enregistrer" saving={saving} />
+                <ItemForm item={editDraft} setItem={setEditDraft} onSave={saveEdit} onCancel={cancelEdit} saveLabel="Enregistrer" saving={saving} token={token} />
               </div>
             ) : (
               <div className="flex items-center gap-4 px-4 py-3.5">
