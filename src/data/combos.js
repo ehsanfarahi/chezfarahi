@@ -78,6 +78,7 @@ export function calcComboPrice(combo, menuItems) {
   let discounted = 0;
   const breakdown = [];
 
+
   combo.itemRefs.forEach(({ id, qty }) => {
     const item = menuItems.find((m) => m.id === id);
     if (!item) return;

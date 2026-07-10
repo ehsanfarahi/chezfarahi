@@ -267,7 +267,7 @@ export default function MenuManager({ token }) {
         method: "PUT",
         headers: { "Content-Type": "application/json", "x-admin-token": token },
         body: JSON.stringify({ ...fullData, menu: updatedItems }),
-      });
+      }); 
       if (!saveRes.ok) throw new Error();
       setItems(updatedItems);
       setSaveMsg("Enregistré ✓");

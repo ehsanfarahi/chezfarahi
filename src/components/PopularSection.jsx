@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Plus, Star } from "lucide-react";
 // import { popularCombos, calcComboPrice } from "../data/combos";
 
+import { calcComboPrice } from "../utils/comboUtils";
 import { useCombosData } from "../hooks/useCombosData";
 
 export default function PopularSection({ onAdd, menuItems }) {
@@ -11,7 +12,7 @@ export default function PopularSection({ onAdd, menuItems }) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const { combos, loading: combosLoading, calcComboPrice } = useCombosData();
+  const { combos, loading: combosLoading } = useCombosData();
 
   if (!menuItems?.length || combosLoading || !combos.length) return null;
 
@@ -89,13 +90,19 @@ function ComboCard({ combo, pricing, onAdd, navigate }) {
   const handleAdd = (e) => {
     e.stopPropagation();
     setPressed(true);
-    onAdd({ id: combo.id, name: combo.name, price: pricing.discounted, desc: combo.name, qty: 1 });
+    onAdd({
+      id: combo.id,
+      name: combo.name,
+      price: pricing.discounted,
+      desc: combo.name,
+      qty: 1,
+    });
     setTimeout(() => setPressed(false), 700);
   };
 
   return (
     <div
-      onClick={() => navigate(`/combo/${combo.linkTo}`)}
+      onClick={() => navigate(`/combo/${combo.id}`)}
       className="group relative flex-none w-56 sm:w-64 bg-char-soft rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-black/50 hover:-translate-y-1 transition-all duration-300 snap-start"
     >
       {/* Savings badge */}
@@ -131,12 +138,29 @@ function ComboCard({ combo, pricing, onAdd, navigate }) {
         </h3>
 
         {/* Includes chips */}
-        <div className="flex flex-wrap gap-1 mb-3">
+        {/* <div className="flex flex-wrap gap-1 mb-3">
           {combo.itemRefs.map(({ id, qty }) => (
             <span key={id} className="text-[10px] bg-char text-mute/70 px-1.5 py-0.5 rounded-md">
               {qty > 1 ? `${qty}× ` : ""}{id}
             </span>
           ))}
+        </div> */}
+
+        {/* Includes chips */}
+        <div className="flex flex-wrap gap-1 mb-3">
+          {[
+            ...(combo.items || []).map((i) => i.name || i.menuItemId),
+            ...(combo.beverages || []).map((b) => b.name || "Boisson"),
+          ]
+            .filter(Boolean)
+            .map((name, idx) => (
+              <span
+                key={idx}
+                className="text-[10px] bg-char text-mute/70 px-1.5 py-0.5 rounded-md"
+              >
+                {name}
+              </span>
+            ))}
         </div>
 
         {/* Price row */}
@@ -154,7 +178,9 @@ function ComboCard({ combo, pricing, onAdd, navigate }) {
           <button
             onClick={handleAdd}
             className={`w-9 h-9 rounded-full flex items-center justify-center transition active:scale-90 ${
-              pressed ? "bg-herb text-cream scale-90" : "bg-chili hover:bg-chili-dark text-cream"
+              pressed
+                ? "bg-herb text-cream scale-90"
+                : "bg-chili hover:bg-chili-dark text-cream"
             }`}
           >
             <Plus size={17} strokeWidth={2.5} />

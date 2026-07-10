@@ -1,26 +1,56 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Heart, Share2, Minus, Plus, Star, Check, Tag } from "lucide-react";
-import { popularCombos, calcComboPrice } from "../data/combos";
+// import { popularCombos, calcComboPrice } from "../data/combos";
 import { useMenuData } from "../hooks/useMenuData";
+
+import { useCombosData } from "../hooks/useCombosData";
+import { calcComboPrice } from "../utils/comboUtils";
 
 export default function ComboDetail({ onAdd }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { menuItems } = useMenuData();
+  // const { menuItems } = useMenuData();
   const [qty, setQty] = useState(1);
   const [favorited, setFavorited] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
 
-  const combo = popularCombos.find((c) => c.id === id);
+  // const combo = popularCombos.find((c) => c.id === id);
 
-  if (!combo || menuItems.length === 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-char text-mute">
-        Chargement...
-      </div>
-    );
-  }
+  const { getComboById, loading: combosLoading } = useCombosData();
+const { menuItems, loading: menuLoading } = useMenuData();
+
+const combo = getComboById(id);
+const loading = combosLoading || menuLoading;
+
+  // if (!combo || menuItems.length === 0) {
+  //   return (
+  //     <div className="min-h-screen flex items-center justify-center bg-char text-mute">
+  //       Chargement...
+  //     </div>
+  //   );
+  // }
+
+  if (loading) {
+  return (
+    <div className="min-h-screen bg-char flex flex-col items-center justify-center gap-3">
+      <span className="text-5xl animate-bounce">🥟</span>
+      <p className="text-mute/50 text-sm">Chargement...</p>
+    </div>
+  );
+}
+
+if (!combo) {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-char text-cream gap-4">
+      <p className="text-mute">Combo introuvable.</p>
+      <button onClick={() => navigate(-1)}
+        className="bg-marigold text-char font-semibold px-5 py-2.5 rounded-full">
+        Retour
+      </button>
+    </div>
+  );
+}
 
   const pricing = calcComboPrice(combo, menuItems);
   const total = (pricing.discounted * qty).toFixed(2);

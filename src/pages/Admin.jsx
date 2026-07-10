@@ -7,6 +7,8 @@ import ComboManager from "../admin/ComboManager";
 import OrdersManager from "../admin/OrdersManager";
 import Settings from "../admin/Settings";
 
+import MenuDuJourManager from "../admin/MenuDuJourManager";
+
 const API_URL = import.meta.env.VITE_API_URL || "";
 
 export default function Admin() {
@@ -60,6 +62,7 @@ export default function Admin() {
     dashboard: <Dashboard />,
     menu:      <MenuManager token={token} />,
     combos:    <ComboManager token={token} />,
+    menuDuJour: <MenuDuJourManager token={token} />,
     orders:    <OrdersManager token={token} />,
     settings:  <Settings token={token} />,
   }[page] || <Dashboard />;

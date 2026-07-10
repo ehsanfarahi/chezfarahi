@@ -87,7 +87,7 @@ console.log("menuItems:", menuItems); // ← add this temporarily
   return (
       <div className="min-h-screen font-body">
         <Navbar cartCount={cartCount} onCartClick={() => setCartOpen(true)} language={language} dispatch={dispatch} />
-        <Hero />
+        <Hero onAdd={handleAdd} />
         <PopularSection onAdd={handleAdd} menuItems={menuItems} />
         <Menu onAdd={handleAdd} />
         <CartPanel

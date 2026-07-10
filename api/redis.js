@@ -93,6 +93,21 @@ export async function getPushSubscription(orderNumber) {
 }
 
 
+// ─── Menu du Jour ─────────────────────────────────────────────────────────────
+export async function getMenuDuJour() {
+  return withRedis(async (client) => {
+    const raw = await client.get("menu:du:jour");
+    return raw ? JSON.parse(raw) : null;
+  });
+}
+
+export async function setMenuDuJour(data) {
+  return withRedis((client) =>
+    client.set("menu:du:jour", JSON.stringify(data))
+  );
+}
+
+
 
 
 

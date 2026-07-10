@@ -54,13 +54,13 @@ export default function TicketCard({ item, onAdd }) {
       </div>
 
       <Image
-        src={item.img}
+        src={item.image? item.image : item.emoji}
         alt={item.name}
         width="200"
         imgStyle="absolute -bottom-12 -right-4"
       />
     </div>
-  );
+  ); 
 }
 
 

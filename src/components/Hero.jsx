@@ -1,10 +1,12 @@
 import { Clock, MapPin, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+import MenuDuJourButton from "./MenuDuJourButton";
+
 // Translation
 import { useTranslation } from "react-i18next"; 
 
-export default function Hero() {
+export default function Hero({ onAdd }) {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -55,6 +57,7 @@ export default function Hero() {
           <Sparkles size={16} />
           {t("hero.cta")}
         </a>
+        <MenuDuJourButton onAdd={onAdd} />
       </div>
     </section>
   );
