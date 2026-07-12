@@ -11,18 +11,18 @@ import ComboDetail from './pages/ComboDetail.jsx';
 import ComboDetailRoute from './pages/ComboDetailRoute.jsx';
 import AdminOrders from "./pages/AdminOrders.jsx"
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <CartProvider>
-     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/product/:id" element={<ProductDetailRoute />} />
-        <Route path="/combo/:id" element={<ComboDetailRoute />} />
-        <Route path='/admin/orders' element={<AdminOrders />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/gestion-cf-2026" element={<Admin />} />
+          <Route path="/product/:id" element={<ProductDetailRoute />} />
+          <Route path="/combo/:id" element={<ComboDetailRoute />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />
+        </Routes>
+      </BrowserRouter>
     </CartProvider>
   </StrictMode>,
-)
+);

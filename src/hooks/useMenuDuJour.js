@@ -10,10 +10,12 @@ export function useMenuDuJour() {
     fetch(`${API_URL}/api/menu-du-jour`)
       .then((r) => r.json())
       .then((data) => {
-        setMenuDuJour(data);
+        setMenuDuJour(data || null);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        setMenuDuJour(null);
+        setLoading(false)});
   }, []);
 
   return { menuDuJour, loading };

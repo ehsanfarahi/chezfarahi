@@ -14,7 +14,7 @@ export default function MenuDuJourButton({ onAdd }) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="ml-4 group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full transition-all duration-300 active:scale-95"
+        className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full transition-all duration-300 active:scale-95"
         style={{
           background: "linear-gradient(135deg, #F2A93B 0%, #C8432A 100%)",
           padding: "0.75rem 1.5rem",
@@ -32,7 +32,7 @@ export default function MenuDuJourButton({ onAdd }) {
         <ChefHat size={18} className="text-char shrink-0" />
 
         <span className="font-display font-bold text-char text-base leading-none">
-          Menu du Jour
+          Plat du Jour
         </span>
 
         {/* Price badge */}
@@ -67,4 +67,4 @@ export default function MenuDuJourButton({ onAdd }) {
       />
     </>
   );
-}
+}  

@@ -16,7 +16,7 @@ const NAV = [
   { id: "dashboard", label: "Tableau de bord", icon: LayoutDashboard },
   { id: "menu",      label: "Menu",             icon: UtensilsCrossed },
   { id: "combos",    label: "Combos",            icon: PackagePlus },
-  { id: "menuDuJour", label: "Menu du Jour",     icon: CalendarDays },
+  { id: "menuDuJour", label: "Plat du Jour",     icon: CalendarDays },
   { id: "orders",    label: "Commandes",         icon: ClipboardList },
   { id: "settings",  label: "Paramètres",        icon: Settings },
 ];
