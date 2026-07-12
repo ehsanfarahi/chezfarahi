@@ -46,19 +46,23 @@ export default function Hero({ onAdd }) {
           </div>
         </div>
 
-        {/* <p onClick={() => navigate(`../Admin`)} className="mt-6">
+        <p onClick={() => navigate(`../Admin`)} className="mt-6">
           Open Admin for Test
-        </p> */}
+        </p>
 
-        <div className="flex flex-wrap items-center gap-3 mt-7">
+        <div className="mt-2 max-sm:grid max-sm:grid-rows-2"> 
           <a
-          href="#menu"
-          className="mt-7 inline-flex items-center gap-2 bg-chili hover:bg-chili-dark text-cream font-semibold px-6 py-3 rounded-full transition active:scale-95"
-        >
-          <Sparkles size={16} />
-          {t("hero.cta")}
-        </a>
-        <div className="absolute bottom-8 right-3"><MenuDuJourButton onAdd={onAdd} /></div>
+            href="#menu"
+            className="mt-7 inline-flex items-center gap-2 bg-chili hover:bg-chili-dark text-cream font-semibold px-6 py-3 rounded-full transition active:scale-95"
+          >
+           <span className="flex items-center gap-2 max-sm:mx-auto">
+             <Sparkles size={16} />
+            {t("hero.cta")}
+           </span>
+          </a>
+          <div className="absolute bottom-8 right-3 max-sm:relative max-sm:-bottom-3 max-sm:right-0">
+            <MenuDuJourButton onAdd={onAdd} />
+          </div>
         </div>
       </div>
     </section>

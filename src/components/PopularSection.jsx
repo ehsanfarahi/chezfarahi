@@ -65,7 +65,7 @@ export default function PopularSection({ onAdd, menuItems }) {
       <div
         ref={scrollRef}
         onScroll={updateScrollState}
-        className="flex gap-4 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-none snap-x snap-mandatory"
+        className="flex gap-4 overflow-x-auto pb-3 -mx-7 px-4 scrollbar-none snap-x snap-mandatory"
       >
         {combos.map((combo) => {
           const pricing = calcComboPrice(combo, menuItems);

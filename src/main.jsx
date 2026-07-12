@@ -17,7 +17,7 @@ createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/gestion-cf-2026" element={<Admin />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/product/:id" element={<ProductDetailRoute />} />
           <Route path="/combo/:id" element={<ComboDetailRoute />} />
           <Route path="/admin/orders" element={<AdminOrders />} />

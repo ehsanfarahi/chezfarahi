@@ -14,7 +14,7 @@ export default function MenuDuJourButton({ onAdd }) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full transition-all duration-300 active:scale-95"
+        className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full transition-all duration-300 active:scale-95 max-sm:w-full cursor-pointer"
         style={{
           background: "linear-gradient(135deg, #F2A93B 0%, #C8432A 100%)",
           padding: "0.75rem 1.5rem",
@@ -22,7 +22,8 @@ export default function MenuDuJourButton({ onAdd }) {
         }}
       >
         {/* Shimmer sweep on hover */}
-        <span
+        <span className="flex items-center gap-2.5 max-sm:mx-auto">
+          <span
           className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
           style={{
             background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
@@ -53,6 +54,7 @@ export default function MenuDuJourButton({ onAdd }) {
             className="relative inline-flex h-2 w-2 rounded-full"
             style={{ background: "#1B1411" }}
           />
+        </span>
         </span>
       </button>
 
