@@ -67,7 +67,7 @@ if (!combo) {
       {/* Hero */}
       <div className="relative w-full h-[36vh] sm:h-[40vh] overflow-hidden">
         <div className="w-full h-full bg-gradient-to-br from-marigold/30 via-char-soft to-chili/20 flex items-center justify-center">
-          <span className="text-[6rem] drop-shadow-lg">{combo.emoji}</span>
+          {combo.image ? <span><img src={combo.image} /></span> : <span className="text-[6rem] drop-shadow-lg">{combo.emoji}</span>}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-char via-transparent to-black/20 pointer-events-none" />
 
@@ -90,7 +90,7 @@ if (!combo) {
           </button>
         </div>
 
-        <div className="absolute bottom-5 left-4">
+        <div className="absolute bottom-3 left-4 z-10">
           <span className="text-[10px] uppercase tracking-wider font-semibold bg-marigold text-char px-2.5 py-1 rounded-full">
             {combo.tag}
           </span>

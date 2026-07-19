@@ -1,29 +1,29 @@
 import { useState, useEffect } from "react";
 import { X, Check, Minus, Plus, Star } from "lucide-react";
 
-// const fontLink = document.getElementById("caveat-font");
-// if(!fontLink) {
-//    const link = document.createElement("link");
-//       link.id = "caveat-font";
-//       link.rel = "stylesheet";
-//       link.href = "https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap";
-//       document.head.appendChild(link);
-// }
+const fontLink = document.getElementById("caveat-font");
+if(!fontLink) {
+   const link = document.createElement("link");
+      link.id = "caveat-font";
+      link.rel = "stylesheet";
+      link.href = "https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap";
+      document.head.appendChild(link);
+}
 
 export default function MenuDuJourBlackboard({ menu, open, onClose, onAdd }) {
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
 
   // Load Caveat font safely inside useEffect (after DOM is ready)
-  useEffect(() => {
-    if (!document.getElementById("caveat-font")) {
-      const link = document.createElement("link");
-      link.id = "caveat-font";
-      link.rel = "stylesheet";
-      link.href = "https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap";
-      document.head.appendChild(link);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!document.getElementById("caveat-font")) {
+  //     const link = document.createElement("link");
+  //     link.id = "caveat-font";
+  //     link.rel = "stylesheet";
+  //     link.href = "https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap";
+  //     document.head.appendChild(link);
+  //   }
+  // }, []);
 
   // Reset qty when modal opens
   useEffect(() => {

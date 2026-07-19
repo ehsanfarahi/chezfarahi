@@ -76,8 +76,8 @@ export default function ProductDetail({ onAdd }) {
     setTimeout(() => setJustAdded(false), 1800);
   };
 
-  return (
-    <div className="min-h-screen bg-char text-cream pb-28">
+  return ( 
+    <div className="min-h-screen max-w-5xl mx-auto bg-char text-cream pb-28">
       {/* Scroll-collapsing mini header */}
       <div
         className={`fixed top-0 inset-x-0 z-40 flex items-center justify-between px-4 py-3 transition-all duration-300 ${
@@ -142,7 +142,7 @@ export default function ProductDetail({ onAdd }) {
         </div>
 
         {/* Tags */}
-        <div className="absolute bottom-5 left-4 flex gap-2">
+        <div className="absolute bottom-3 left-4 flex gap-2 z-10">
           {product.tag && (
             <span className="text-[10px] uppercase tracking-wider font-semibold bg-marigold text-char px-2.5 py-1 rounded-full">
               {product.tag}
@@ -308,7 +308,7 @@ export default function ProductDetail({ onAdd }) {
       </div>
 
       {/* Sticky bottom bar */}
-      <div className="fixed bottom-0 inset-x-0 z-40 bg-char-soft border-t border-cream/10 px-5 py-4 flex items-center justify-between gap-4">
+      <div className="fixed bottom-0 inset-x-0 max-w-5xl mx-auto z-40 bg-char-soft border-t border-cream/10 px-5 py-4 flex items-center justify-between gap-4">
         <div>
           <p className="text-xs text-mute/60">Total</p>
           <p className="font-mono text-lg font-semibold">{total}€</p>

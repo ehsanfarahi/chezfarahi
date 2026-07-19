@@ -119,9 +119,9 @@ function ComboCard({ combo, pricing, onAdd, navigate }) {
 
       {/* Image */}
       <div className="relative w-full h-36 sm:h-40 bg-gradient-to-br from-marigold/25 via-char to-chili/15 flex items-center justify-center overflow-hidden">
-        <span className="text-6xl sm:text-7xl drop-shadow-lg group-hover:scale-110 transition-transform duration-500">
+        {combo.image ? <span className="group-hover:scale-110 transition-transform duration-500 absolute -bottom-6"><img src={combo.image} /></span> : <span className="text-6xl sm:text-7xl drop-shadow-lg group-hover:scale-110 transition-transform duration-500">
           {combo.emoji}
-        </span>
+        </span>}
         <div className="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-char-soft to-transparent pointer-events-none" />
       </div>
 

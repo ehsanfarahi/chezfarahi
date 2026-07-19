@@ -13,8 +13,9 @@ export default function Navbar({ cartCount, onCartClick, language, dispatch }) {
         <div className="flex items-center gap-1">
           <Image src={logo} alt="logo" imgStyle="pt-1 w-18 h-18 -ml-2" />
           <div className="flex flex-col leading-tight">
-            <span className=" text-2xl font-bold text-marigold font-bebas"><span className="text-cream font-poppins">Chez</span>Farahi</span>
-            <span className="text-[11.85px] text-mute/80 font-montserrat">
+            <span className=" text-2xl font-bold text-marigold"><span className="text-cream">Chez</span>Farahi</span>
+             {/* <span className=" text-2xl font-bold text-marigold font-bebas"><span className="text-cream font-poppins">Chez</span>Farahi</span> */}
+            <span className="text-[12.20px] text-mute/80 font-montserrat">
               <span>Good Food,</span>
               <span> Good Mood</span>
             </span>
