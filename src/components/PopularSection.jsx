@@ -94,8 +94,11 @@ function ComboCard({ combo, pricing, onAdd, navigate }) {
       id: combo.id,
       name: combo.name,
       price: pricing.discounted,
-      desc: combo.name,
       qty: 1,
+      comboDetails: {
+    items: combo.items,       // [{ name, originalPrice, comboPrice }]
+    beverages: combo.beverages || [],
+  }
     });
     setTimeout(() => setPressed(false), 700);
   };
