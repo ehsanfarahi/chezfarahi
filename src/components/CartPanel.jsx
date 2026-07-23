@@ -1,4 +1,4 @@
-import { X, Minus, Plus, Trash2 } from "lucide-react";
+import { X, Minus, Plus, Trash2, MessageSquare } from "lucide-react";
 
 import OrderQRModal from "./OrderQRModal";
 import { useState } from "react";
@@ -11,7 +11,8 @@ export default function CartPanel({ open, onClose, cart, onInc, onDec, onRemove,
 
   const [showQR, setShowQR] = useState(false);
   const [activeTab, setActiveTab] = useState("cart"); // "cart" | "history"
-
+  const [note,     setNote]     = useState("");
+  const [showNote, setShowNote] = useState(false);
 
   const handleReorder = (items) => onReorder?.(items);
 
@@ -188,6 +189,39 @@ export default function CartPanel({ open, onClose, cart, onInc, onDec, onRemove,
             Commander
           </button> */}
 
+
+
+          {/* Note toggle — add between total row and Commander button */}
+{cart.length > 0 && (
+  <div className="mb-3">
+    <button
+      onClick={() => setShowNote((s) => !s)}
+      className={`flex items-center gap-2 text-xs px-3 py-2 rounded-full border transition w-full mb-2 ${
+        showNote
+          ? "bg-marigold/10 border-marigold/35 text-marigold"
+          : "border-cream/15 text-mute/60 hover:text-cream hover:border-cream/25"
+      }`}
+    >
+      <MessageSquare size={12} />
+      {note && !showNote
+        ? `Note: "${note.slice(0, 28)}${note.length > 28 ? "…" : ""}"`
+        : showNote
+        ? "Masquer la note"
+        : "Ajouter une note pour la cuisine"}
+    </button>
+    {showNote && (
+      <textarea
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+        placeholder="Ex: sans piment, allergie noix, sauce en plus..."
+        rows={3}
+        maxLength={200}
+        className="w-full bg-char border border-cream/15 focus:border-marigold/50 rounded-2xl px-4 py-3 text-sm text-cream placeholder-mute/40 resize-none outline-none transition"
+      />
+    )}
+  </div>
+)}
+
           <button
   disabled={cart.length === 0}
   onClick={() => setShowQR(true)}
@@ -200,7 +234,11 @@ export default function CartPanel({ open, onClose, cart, onInc, onDec, onRemove,
   cart={cart}
   open={showQR}
   onClose={() => setShowQR(false)}
-  onConfirmed={onClearCart}
+  onConfirmed={() => {
+    onClearCart();
+    setNote("");                 // ← add this
+    setShowNote(false);          // ← add this
+  }}
   onOrderReady={(num) => {
     // Will be caught by the global watcher in App.jsx
     localStorage.setItem("camion_pending_order", JSON.stringify({ orderNumber: num, status: "ready" }));

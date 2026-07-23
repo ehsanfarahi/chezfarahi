@@ -5,8 +5,9 @@ import logo from "/images/logo.png"
 
 // Import components
 import { Image, Languages } from "./index";
+import NotificationBell from "./NotificationBell";
 
-export default function Navbar({ cartCount, onCartClick, language, dispatch }) {
+export default function Navbar({ cartCount, onCartClick, language, dispatch, setReadyOrderNumber }) {
   return (
     <header className="sticky top-0 z-30 bg-char/90 backdrop-blur border-b border-cream/10">
       <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
@@ -26,6 +27,7 @@ export default function Navbar({ cartCount, onCartClick, language, dispatch }) {
             <MapPin size={14} /> Haguenau, Place du Marché
           </span> */}
           <Languages language={language} dispatch={dispatch} />
+          <NotificationBell onShowOrderReady={(num) => setReadyOrderNumber(num)} />
           <button
             onClick={onCartClick}
             className="relative w-10 h-10 rounded-full bg-char-soft flex items-center justify-center hover:bg-marigold/20 transition"

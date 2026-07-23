@@ -76,6 +76,11 @@ function ModernModal({ menu, open, onClose, onAdd }) {
       qty,
       desc: allItems.map((i) => i.name).join(", "),
       isMenuDuJour: true,
+      menuDuJourDetails: {
+    items:      menu.items      || [],
+    extraItems: menu.extraItems || [],
+    beverage:   menu.beverage   || null,
+  }
     });
     setJustAdded(true);
     setTimeout(() => {
