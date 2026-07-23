@@ -57,7 +57,10 @@ if (!combo) {
   const totalOriginal = (pricing.original * qty).toFixed(2);
 
   const handleAdd = () => {
-    onAdd?.({ id: combo.id, name: combo.name, price: pricing.discounted, qty });
+    onAdd?.({ id: combo.id, name: combo.name, price: pricing.discounted, qty, comboDetails: {
+    items: combo.items,       // [{ name, originalPrice, comboPrice }]
+    beverages: combo.beverages || [],
+  } });
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1800);
   };

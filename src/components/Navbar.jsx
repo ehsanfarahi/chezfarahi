@@ -5,9 +5,13 @@ import logo from "/images/logo.png"
 
 // Import components
 import { Image, Languages } from "./index";
-
 import NotificationBell from "./NotificationBell";
 
+<<<<<<< HEAD
+import NotificationBell from "./NotificationBell";
+
+=======
+>>>>>>> 393817f8858bbe4ffc92642f0f2f8cbadb6b6707
 export default function Navbar({ cartCount, onCartClick, language, dispatch, setReadyOrderNumber }) {
   return (
     <header className="sticky top-0 z-30 bg-char/90 backdrop-blur border-b border-cream/10">
