@@ -8,8 +8,16 @@ import {
   formatTime,
 } from "../utils/orderUtils";
 import {
-  ScanLine, CheckCircle, Clock, Trash2,
-  ChevronDown, ChevronUp, X, RefreshCw, Volume2,
+  ScanLine,
+  CheckCircle,
+  Clock,
+  Trash2,
+  ChevronDown,
+  ChevronUp,
+  X,
+  RefreshCw,
+  Volume2,
+  MessageSquare,
 } from "lucide-react";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
@@ -293,9 +301,7 @@ export default function OrdersManager({ token }) {
               {/* Card header */}
               <div
                 className="flex items-center gap-3 px-4 py-3.5 cursor-pointer"
-                onClick={() =>
-                  setExpandedId(isExpanded ? null : order.orderId)
-                }
+                onClick={() => setExpandedId(isExpanded ? null : order.orderId)}
               >
                 {/* Prominent 3-digit number */}
                 <div
@@ -313,6 +319,11 @@ export default function OrdersManager({ token }) {
                     <span className="font-mono text-marigold">
                       · {order.total.toFixed(2)}€
                     </span>
+                    {order.note && (
+                      <span className="ml-2 inline-flex items-center gap-0.5 text-[10px] bg-marigold/15 text-marigold px-1.5 py-0.5 rounded-full">
+                        <MessageSquare size={9} /> Note
+                      </span>
+                    )}
                   </p>
                   <p className="text-[10px] text-mute/40 font-mono mt-0.5">
                     {formatTime(order.scannedAt)}
@@ -333,16 +344,33 @@ export default function OrdersManager({ token }) {
                       <Volume2 size={15} />
                     </button>
                   )}
-                  {isExpanded
-                    ? <ChevronUp size={14} className="text-mute/40" />
-                    : <ChevronDown size={14} className="text-mute/40" />
-                  }
+                  {isExpanded ? (
+                    <ChevronUp size={14} className="text-mute/40" />
+                  ) : (
+                    <ChevronDown size={14} className="text-mute/40" />
+                  )}
                 </div>
               </div>
 
               {/* Expanded detail */}
               {isExpanded && (
                 <div className="border-t border-cream/5 px-4 pb-4 pt-3">
+                  {/* Customer note */}
+                  {order.note && (
+                    <div className="bg-marigold/8 border border-marigold/20 rounded-xl px-3 py-2.5 mb-3 flex items-start gap-2">
+                      <MessageSquare
+                        size={13}
+                        className="text-marigold shrink-0 mt-0.5"
+                      />
+                      <div>
+                        <p className="text-[10px] text-marigold/70 uppercase tracking-wider font-semibold mb-0.5">
+                          Note du client
+                        </p>
+                        <p className="text-sm text-cream">{order.note}</p>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="space-y-1.5 mb-4">
                     {order.items?.map((item, i) => (
                       <div key={i} className="flex justify-between text-sm">

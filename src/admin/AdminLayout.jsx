@@ -49,7 +49,7 @@ export default function AdminLayout({ page, setPage, onLogout, children }) {
         <p className="text-marigold text-[10px] font-semibold uppercase tracking-widest mb-0.5">
           Administration
         </p>
-        <h1 className="font-display text-xl font-bold text-cream">Le Camion Doré</h1>
+        <h1 className="font-display text-xl font-bold text-cream">Chez Farahi</h1>
       </div>
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         {NAV.map((item) => <NavItem key={item.id} item={item} />)}

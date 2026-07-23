@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
   try {
-    const { items, total } = req.body;
+    const { items, total, note } = req.body;
 
     if (!Array.isArray(items) || !total) {
       return res.status(400).json({ error: "items and total required" });
@@ -22,6 +22,7 @@ export default async function handler(req, res) {
       status: "pending",
       items,
       total,
+      note: note || "",
       createdAt: new Date().toISOString(),
     });
 

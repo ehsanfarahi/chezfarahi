@@ -65,8 +65,7 @@ useEffect(() => {
 
   
 
-  const { menuItems } = useMenuData();
-console.log("menuItems:", menuItems); // ← add this temporarily
+  const { menuItems } = useMenuData(); 
 
   // Use Reducer
   const [{ language }, dispatch] = useReducer(reducer, initialState);
@@ -86,7 +85,7 @@ console.log("menuItems:", menuItems); // ← add this temporarily
 
   return (
       <div className="min-h-screen font-body">
-        <Navbar cartCount={cartCount} onCartClick={() => setCartOpen(true)} language={language} dispatch={dispatch} />
+        <Navbar cartCount={cartCount} onCartClick={() => setCartOpen(true)} language={language} dispatch={dispatch} setReadyOrderNumber={setReadyOrderNumber} />
         <Hero onAdd={handleAdd} />
         <PopularSection onAdd={handleAdd} menuItems={menuItems} />
         <Menu onAdd={handleAdd} />

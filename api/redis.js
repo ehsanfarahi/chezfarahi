@@ -19,7 +19,7 @@ async function withRedis(fn) {
     await client.disconnect();
   }
 }
-
+ 
 // ─── Business data ────────────────────────────────────────────────────────────
 export async function getBusinessData() {
   return withRedis(async (client) => {
