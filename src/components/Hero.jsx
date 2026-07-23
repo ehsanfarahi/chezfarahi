@@ -1,15 +1,61 @@
-import { Clock, MapPin, Sparkles } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
+import { Clock, MapPin, Sparkles, ChefHat } from "lucide-react";
+import { useSchedule } from "../hooks/useSchedule";
+import ScheduleModal from "./Schedulemodal";
 import MenuDuJourButton from "./MenuDuJourButton";
+
+
+import { useNavigate } from "react-router-dom";
 
 // Translation
 import { useTranslation } from "react-i18next"; 
 
 export default function Hero({ onAdd }) {
+  const {schedule, loading} = useSchedule();
+  const [scheduleOpen, setScheduleOpen] = useState(false);
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+
+   const openMaps = (location) => {
+    if (!location) return;
+    const url =
+      location.mapsUrl ||
+      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        location.name
+      )}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  // Derived display values
+  const isOpen      = schedule?.status === "open";
+  const todayLoc    = schedule?.todayLocation;
+  const todayHours  = schedule?.todayHours;
+  const nextOpening = schedule?.nextOpening;
+
+  // Status pill text
+ const statusText = loading
+    ? "Chargement..."
+    : isOpen
+    ? `Ouvert maintenant · ferme à ${todayHours?.close || "—"}`
+    : nextOpening
+    ? `Fermé · ouvre ${nextOpening.day} à ${nextOpening.open}`
+    : "Fermé";
+
+  // Location to show
+  const displayLocation = isOpen ? todayLoc : nextOpening?.location || null;
+  const locationLabel   = isOpen
+    ? todayLoc?.name || ""
+    : nextOpening?.location?.name
+    ? `${nextOpening.day} · ${nextOpening.location.name}`
+    : "";
+
+  // Time label (clickable -> opens schedule)
+  const timeLabel = isOpen
+    ? `${todayHours?.open || ""} – ${todayHours?.close || ""}`
+    : nextOpening
+    ? `${nextOpening.day} · ${nextOpening.open}`
+    : "";
 
   return (
     <section className="relative max-w-5xl mx-auto px-4 pt-10 pb-8">
@@ -18,11 +64,12 @@ export default function Hero({ onAdd }) {
       <div className="max-w-[60%] max-sm:max-w-full">
         <div className="flex items-center gap-2 mb-4">
           <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-herb opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-herb" />
+            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isOpen ? "bg-herb" : "bg-mute/40"}`} />
+            <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${isOpen ? "bg-herb" : "bg-mute/40"}`} />
           </span>
-          <span className="text-sm font-medium text-mute">
-            {t("hero.status")}
+          <span className={`text-sm font-medium ${isOpen ? "text-mute" : "text-mute/60"}`}>
+            {/* {t("hero.status")} */}
+            {t(statusText)}
           </span>
         </div>
 
@@ -35,15 +82,30 @@ export default function Hero({ onAdd }) {
           {t("hero.subtitle")}
         </p>
 
-        <div className="mt-32 flex flex-wrap gap-3">
-          <div className="flex items-center gap-2 bg-char-soft border border-cream/10 rounded-full px-4 py-2 text-sm text-mute">
-            <MapPin size={15} className="text-marigold" />
-            Halle aux Houblons, Haguenau
-          </div>
-          <div className="flex items-center gap-2 bg-char-soft border border-cream/10 rounded-full px-4 py-2 text-sm text-mute">
-            <Clock size={15} className="text-marigold" />
-            07h00 – 12h00
-          </div>
+        <div className="mt-32 flex gap-3">
+          {locationLabel ? (
+            <button onClick={() => openMaps(displayLocation)} className="flex items-center gap-2 bg-char-soft border border-cream/10 hover:border-marigold/30 rounded-full px-4 py-2 text-sm text-mute hover:text-cream transition group truncate">
+            <MapPin size={15} className="text-marigold group-hover:scale-110 transition-transform" />
+            {locationLabel}
+          </button>
+          ) : (
+            <div className="flex items-center gap-2 bg-char-soft border border-cream/10 rounded-full px-4 py-2 text-sm text-mute/50">
+            <MapPin size={15} className="text-mute/30" />
+            Emplacement à venir
+            </div>
+          )}
+          
+          {timeLabel ? (
+            <button onClick={() => setScheduleOpen(true)} className="flex items-center gap-2 bg-char-soft border border-cream/10 hover:border-marigold/30 rounded-full px-4 py-2 text-sm text-mute hover:text-cream transition group whitespace-nowrap">
+            <Clock size={15} className="text-marigold group-hover:scale-110 transition-transform" />
+            {timeLabel}
+          </button>
+          ) : (
+            <button onClick={() => setScheduleOpen(true)} className="flex items-center gap-2 bg-char-soft border border-cream/10 hover:border-marigold/30 rounded-full px-4 py-2 text-sm text-mute/50 hover:text-cream transition whitespace-nowrap">
+            <Clock size={15} className="text-mute/30" />
+            Voir le planning
+          </button>
+          )}
         </div>
 
         <p onClick={() => navigate(`../Admin`)} className="mt-6">
@@ -65,6 +127,8 @@ export default function Hero({ onAdd }) {
           </div>
         </div>
       </div>
+      {/* Schedule modal */}
+      <ScheduleModal open={scheduleOpen} onClose={() => setScheduleOpen(false)} schedule={schedule} />
     </section>
   );
 }
